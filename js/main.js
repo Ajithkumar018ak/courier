@@ -818,106 +818,127 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================
-       LOGIN FORM VALIDATION
-    ========================================================= */
+   /* =========================================================
+   LOGIN FORM VALIDATION + DASHBOARD REDIRECT
+========================================================= */
 
-    document.querySelectorAll(".login-form").forEach(form => {
+document.querySelectorAll(".login-form").forEach(form => {
 
-        form.addEventListener("submit", event => {
+    form.addEventListener("submit", event => {
 
-            event.preventDefault();
+        event.preventDefault();
+        event.stopPropagation();
 
-            const submitButton =
-                form.querySelector(".login-submit");
+        const submitButton =
+            form.querySelector(".login-submit");
 
-            if (!submitButton) return;
+        if (!submitButton) return;
 
+        const inputs =
+            form.querySelectorAll("input[required]");
 
-            const inputs =
-                form.querySelectorAll("input[required]");
+        let valid = true;
 
-            let valid = true;
+        /* -----------------------------------------
+           VALIDATE INPUTS
+        ----------------------------------------- */
 
-
-            inputs.forEach(input => {
-
-                input.classList.remove("input-error");
-
-                if (!input.value.trim()) {
-
-                    input.classList.add("input-error");
-                    valid = false;
-
-                }
-
-                if (
-                    input.type === "email" &&
-                    input.value.trim()
-                ) {
-
-                    const emailPattern =
-                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-                    if (!emailPattern.test(input.value)) {
-
-                        input.classList.add("input-error");
-                        valid = false;
-
-                    }
-
-                }
-
-            });
-
-
-            if (!valid) {
-
-                return;
-
-            }
-
-
-            const originalText =
-                submitButton.innerHTML;
-
-            submitButton.innerHTML =
-                `<i class="fa-solid fa-spinner fa-spin"></i> Signing in...`;
-
-            submitButton.disabled = true;
-
-
-            setTimeout(() => {
-
-                submitButton.innerHTML =
-                    originalText;
-
-                submitButton.disabled = false;
-
-                closeLoginModal();
-
-            }, 1200);
-
-        });
-
-    });
-
-
-    /* =========================================================
-       INPUT ERROR CLEAR
-    ========================================================= */
-
-    document.querySelectorAll(
-        ".login-form input"
-    ).forEach(input => {
-
-        input.addEventListener("input", () => {
+        inputs.forEach(input => {
 
             input.classList.remove("input-error");
 
+            const value = input.value.trim();
+
+            if (!value) {
+                input.classList.add("input-error");
+                valid = false;
+                return;
+            }
+
+            if (input.type === "email") {
+
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailPattern.test(value)) {
+                    input.classList.add("input-error");
+                    valid = false;
+                }
+            }
+
         });
 
+        /* -----------------------------------------
+           STOP IF INVALID
+        ----------------------------------------- */
+
+        if (!valid) {
+            return;
+        }
+
+        /* -----------------------------------------
+           CHECK LOGIN TYPE
+        ----------------------------------------- */
+
+        const loginType =
+            form.getAttribute("data-login-form");
+
+        const originalText =
+            submitButton.innerHTML;
+
+        /* -----------------------------------------
+           LOADING STATE
+        ----------------------------------------- */
+
+        submitButton.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Signing in...';
+
+        submitButton.disabled = true;
+
+        /* -----------------------------------------
+           USER LOGIN
+           → USER DASHBOARD
+        ----------------------------------------- */
+
+        if (loginType === "user") {
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "user-dashboard.html";
+
+            }, 700);
+
+            return;
+        }
+
+        /* -----------------------------------------
+           ADMIN LOGIN
+           → ADMIN DASHBOARD
+        ----------------------------------------- */
+
+        if (loginType === "admin") {
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "admin-dashboard.html";
+
+            }, 700);
+
+            return;
+        }
+
+        /* -----------------------------------------
+           FALLBACK
+        ----------------------------------------- */
+
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+
     });
+
+});
 
 
     /* =========================================================
@@ -1060,3 +1081,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 });
+
+
+
+
