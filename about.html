@@ -92,18 +92,9 @@
 
     <div class="navbar">
 
-        <a href="index.html" class="brand-logo">
-
-            <span class="brand-icon">
-                <i class="fa-solid fa-paper-plane"></i>
-            </span>
-
-            <span class="brand-copy">
-                <strong>NEXORA</strong>
-                <small>EXPRESS</small>
-            </span>
-
-        </a>
+       <a href="index.html" class="brand-logo">
+    <img src="assets/logo.webp" alt="NEXORA EXPRESS Logo">
+</a>
 
 
         <nav class="desktop-navigation">
@@ -139,12 +130,12 @@
         <div class="navbar-actions">
 
             <button class="nav-login" data-login-open>
-                Sign In
+                LOGIN
             </button>
 
             <a href="tracking.html"
                class="primary-btn nav-cta magnetic-btn ripple-btn">
-                Track Package
+                ship Now
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
 
@@ -167,39 +158,30 @@
 
 
 
-<!-- ============================================================
-     MOBILE DRAWER
-     ============================================================ -->
-
 <div class="mobile-overlay" id="mobileOverlay"></div>
 
 <aside class="mobile-drawer" id="mobileDrawer">
 
     <div class="drawer-header">
 
-        <a href="index.html" class="drawer-logo">
+       <a href="index.html" class="drawer-logo">
+    <img src="assets/logo.webp" alt="SWIFTGO Logo">
+</a>
 
-            <span class="brand-icon">
-                <i class="fa-solid fa-paper-plane"></i>
-            </span>
-
-            <span class="brand-copy">
-                <strong>NEXORA</strong>
-                <small>EXPRESS</small>
-            </span>
-
-        </a>
-
-        <button class="drawer-close" id="drawerClose">
+        <button
+            class="drawer-close"
+            id="drawerClose"
+            aria-label="Close navigation"
+        >
             <i class="fa-solid fa-xmark"></i>
         </button>
 
     </div>
 
 
-    <nav class="drawer-navigation">
+    <div class="drawer-navigation">
 
-        <a href="index.html" class="drawer-link">
+        <a href="index.html" class="drawer-link ">
             <span>01</span>
             Home
         </a>
@@ -209,12 +191,12 @@
             About
         </a>
 
-        <a href="services.html" class="drawer-link">
+        <a href="service.html" class="drawer-link">
             <span>03</span>
             Services
         </a>
 
-        <a href="tracking.html" class="drawer-link">
+        <a href="track.html" class="drawer-link">
             <span>04</span>
             Track Shipment
         </a>
@@ -224,20 +206,40 @@
             Contact
         </a>
 
-    </nav>
+    </div>
 
 
     <div class="drawer-bottom">
 
-        <button class="drawer-login" data-login-open>
-            Sign In
-        </button>
+    <div class="drawer-contact">
 
-        <a href="tracking.html" class="primary-btn">
-            Track Package
-        </a>
+        <div class="drawer-contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Chennai, Tamil Nadu, India</span>
+        </div>
+
+        <div class="drawer-contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91 90000 00000</span>
+        </div>
+
+        <div class="drawer-contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>hello@swiftgo.com</span>
+        </div>
 
     </div>
+
+    <button
+        type="button"
+        class="drawer-login"
+        data-login-open
+    >
+        LOGIN
+        <i class="fa-solid fa-arrow-right"></i>
+    </button>
+
+</div>
 
 </aside>
 
@@ -1074,7 +1076,6 @@
 
 
 
-
 <!-- =========================================================
      FOOTER
 ========================================================= -->
@@ -1087,18 +1088,9 @@
 
             <div class="footer-brand">
 
-                <a href="index.html" class="brand-logo footer-logo">
-
-                    <span class="brand-icon">
-                        <i class="fa-solid fa-location-arrow"></i>
-                    </span>
-
-                    <span class="brand-copy">
-                        <strong>NEXORA</strong>
-                        <small>EXPRESS</small>
-                    </span>
-
-                </a>
+             <a href="index.html" class="brand-logo footer-logo">
+    <img src="assets/logo.webp" alt="NEXORA EXPRESS Logo">
+</a>
 
 
                 <p>
@@ -1133,23 +1125,27 @@
             <div class="footer-column">
 
                 <h4>
-                    PLATFORM
+                    QUICK LINKS
                 </h4>
 
-                <a href="services.html">
-                    Courier Services
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="service.html">
+                    Service
                 </a>
 
                 <a href="track.html">
-                    Track Shipment
+                    Track
                 </a>
 
-                <a href="404.html">
-                    Business Shipping
-                </a>
-
-                <a href="404.html">
-                    Delivery Network
+                <a href="contact.html">
+                    Contact
                 </a>
 
             </div>
@@ -1275,39 +1271,70 @@
 
 
 
-<!-- ============================================================
+<!-- =========================================================
      LOGIN MODAL
-     ============================================================ -->
+========================================================= -->
 
-<div class="modal-overlay"
-     id="loginModal"
-     aria-hidden="true">
+<div
+    class="modal-overlay"
+    id="loginModal"
+    aria-hidden="true"
+>
 
-    <div class="login-modal">
+    <div
+        class="login-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="loginTitle"
+    >
 
-        <button class="modal-close" id="loginModalClose">
+        <button
+            class="modal-close"
+            id="loginModalClose"
+            aria-label="Close login"
+        >
             <i class="fa-solid fa-xmark"></i>
         </button>
 
 
         <div class="login-visual">
 
-            <img src="assets/images/login-courier.jpg"
-                 alt="NEXORA courier">
+            <!-- REPLACE IMAGE -->
+            <img
+                src="assets/l1.webp"
+                alt="NEXORA secure delivery network"
+            >
 
             <div class="login-visual-overlay"></div>
 
+
             <div class="login-visual-content">
 
-                <span class="secure-badge">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    SECURE ACCESS
+                <span>
+                    NEXORA EXPRESS
                 </span>
 
-                <h2>
-                    Your deliveries.
-                    <span>Your control.</span>
-                </h2>
+                <h3>
+                    Your shipments.
+                    <br>
+                    Always within reach.
+                </h3>
+
+                <div class="secure-badge">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <div>
+                        <strong>
+                            Secure Workspace
+                        </strong>
+
+                        <small>
+                            Protected session
+                        </small>
+                    </div>
+
+                </div>
 
             </div>
 
@@ -1316,52 +1343,186 @@
 
         <div class="login-content">
 
-            <span class="section-kicker">
-                NEXORA EXPRESS
-            </span>
+            <div class="login-heading">
 
-            <h2 class="login-heading" id="loginTitle">
-                Welcome back.
-            </h2>
+                <span>
+                    WELCOME BACK
+                </span>
+
+                <h2 id="loginTitle">
+                    Sign in to NEXORA
+                </h2>
+
+                <p>
+                    Access your shipments, delivery
+                    history and business logistics.
+                </p>
+
+            </div>
 
 
             <div class="login-tabs">
 
-                <button class="login-tab active"
-                        data-login-tab="user">
-                    Customer
+                <button
+                    type="button"
+                    class="login-tab active"
+                    data-login-tab="user"
+                >
+                    User Login
                 </button>
 
-                <button class="login-tab"
-                        data-login-tab="admin">
-                    Admin
+                <button
+                    type="button"
+                    class="login-tab"
+                    data-login-tab="admin"
+                >
+                    Admin Login
                 </button>
 
             </div>
 
 
-            <form class="login-form active"
-                  id="userLoginForm">
+            <!-- USER LOGIN -->
+
+            <form
+                class="login-form active"
+                id="userLoginForm"
+                data-login-form="user"
+            >
+
+                <label>
+                    Email Address
+                </label>
 
                 <div class="input-wrap">
 
-                    <input type="email"
-                           placeholder="Email address"
-                           required>
-
                     <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="userEmail"
+                        placeholder="you@company.com"
+                        required
+                    >
 
                 </div>
 
 
+                <label>
+                    Password
+                </label>
+
                 <div class="input-wrap">
 
-                    <input type="password"
-                           placeholder="Password"
-                           required>
+                    <i class="fa-solid fa-lock"></i>
 
-                    <button type="button"
-                            class="password-toggle">
+                    <input
+                        type="password"
+                        id="userPassword"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-password-toggle="userPassword"
+                        aria-label="Show password"
+                    >
+                        <i class="fa-regular fa-eye"></i>
+                    </button>
+
+                </div>
+
+
+                <div class="login-options">
+
+                    <label class="remember-option">
+
+                        <input
+                            type="checkbox"
+                        >
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                    <a href="404.html">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-submit"
+                >
+                    Sign In
+
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+
+                <p class="login-create">
+                    New to NEXORA?
+
+                    <a href="404.html">
+                        Create an account
+                    </a>
+                </p>
+
+            </form>
+
+
+            <!-- ADMIN LOGIN -->
+
+            <form
+                class="login-form"
+                id="adminLoginForm"
+                data-login-form="admin"
+            >
+
+                <label>
+                    Admin Email
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        placeholder="admin@company.com"
+                        required
+                    >
+
+                </div>
+
+
+                <label>
+                    Admin Password
+                </label>
+
+                <div class="input-wrap">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Enter admin password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        data-password-toggle="adminPassword"
+                        aria-label="Show password"
+                    >
                         <i class="fa-regular fa-eye"></i>
                     </button>
 
@@ -1374,68 +1535,26 @@
 
                         <input type="checkbox">
 
-                        <span>Remember me</span>
+                        <span>
+                            Remember me
+                        </span>
 
                     </label>
 
-                    <a href="#">Forgot password?</a>
+                    <a href="404.html">
+                        Forgot password?
+                    </a>
 
                 </div>
 
 
-                <button type="submit"
-                        class="login-submit">
+                <button
+                    type="submit"
+                    class="login-submit admin-submit"
+                >
+                    Login as Admin
 
-                    Sign In
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </button>
-
-
-                <div class="login-create">
-                    New to NEXORA?
-                    <a href="#">Create an account</a>
-                </div>
-
-            </form>
-
-
-            <form class="login-form"
-                  id="adminLoginForm">
-
-                <div class="input-wrap">
-
-                    <input type="email"
-                           placeholder="Admin email"
-                           required>
-
-                    <i class="fa-regular fa-envelope"></i>
-
-                </div>
-
-
-                <div class="input-wrap">
-
-                    <input type="password"
-                           placeholder="Admin password"
-                           required>
-
-                    <button type="button"
-                            class="password-toggle">
-                        <i class="fa-regular fa-eye"></i>
-                    </button>
-
-                </div>
-
-
-                <button type="submit"
-                        class="login-submit admin-submit">
-
-                    Admin Sign In
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
+                    <i class="fa-solid fa-lock"></i>
                 </button>
 
             </form>
@@ -1443,9 +1562,11 @@
 
             <div class="login-security">
 
-                <i class="fa-solid fa-lock"></i>
+                <i class="fa-solid fa-shield-check"></i>
 
-                Secure NEXORA account access
+                <span>
+                    Secure encrypted session · Enterprise protection
+                </span>
 
             </div>
 
