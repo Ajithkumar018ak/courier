@@ -1,0 +1,4672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SWIFTGO — Admin Dashboard</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        :root {
+            --orange: #f97316;
+            --orange-dark: #ea580c;
+            --amber: #f59e0b;
+            --amber-dark: #d97706;
+
+            --orange-soft: #fff1e7;
+            --amber-soft: #fffbeb;
+            --cream: #fffaf5;
+
+            --dark: #21150f;
+            --dark-2: #302018;
+            --text: #252525;
+            --muted: #737373;
+
+            --white: #ffffff;
+            --bg: #f7f7f5;
+            --border: #e7e5e4;
+
+            --green: #16a34a;
+            --green-soft: #ecfdf3;
+
+            --red: #dc2626;
+            --red-soft: #fef2f2;
+
+            --blue: #2563eb;
+            --blue-soft: #eff6ff;
+
+            --sidebar-width: 270px;
+
+            --shadow-sm:
+                0 4px 16px rgba(36, 22, 12, 0.05);
+
+            --shadow-md:
+                0 14px 35px rgba(36, 22, 12, 0.08);
+
+            --radius: 18px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+        /* =========================================================
+           SIDEBAR
+        ========================================================= */
+
+        .sidebar {
+            position: fixed;
+            inset: 0 auto 0 0;
+            width: var(--sidebar-width);
+            background: #ffffff;
+            border-right: 1px solid var(--border);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s ease, transform 0.3s ease;
+        }
+
+        .sidebar-brand {
+            height: 82px;
+            padding: 0 22px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-logo {
+            width: 43px;
+            height: 43px;
+            border-radius: 13px;
+            background: linear-gradient(
+                135deg,
+                var(--orange),
+                var(--amber)
+            );
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-size: 20px;
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.24);
+            flex-shrink: 0;
+        }
+
+        .brand-copy {
+            margin-left: 12px;
+        }
+
+        .brand-copy strong {
+            display: block;
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-copy span {
+            display: block;
+            margin-top: 1px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            color: var(--orange);
+        }
+
+        .admin-label {
+            margin: 24px 22px 10px;
+            font-size: 10px;
+            font-weight: 800;
+            color: #a3a3a3;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            padding: 0 12px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link-custom {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            min-height: 48px;
+            padding: 0 14px;
+            border-radius: 12px;
+            color: #686868;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .nav-link-custom i {
+            width: 21px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .nav-link-custom:hover {
+            background: var(--orange-soft);
+            color: var(--orange-dark);
+        }
+
+        .nav-link-custom.active {
+            background: linear-gradient(
+                135deg,
+                #fff0e4,
+                #fff8e9
+            );
+            color: var(--orange-dark);
+        }
+
+        .nav-link-custom.active::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            border-radius: 10px;
+            background: linear-gradient(
+                var(--orange),
+                var(--amber)
+            );
+        }
+
+        .nav-count {
+            margin-left: auto;
+            min-width: 24px;
+            height: 22px;
+            padding: 0 7px;
+            border-radius: 20px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 10px;
+            display: grid;
+            place-items: center;
+        }
+
+        .sidebar-user {
+            margin: 14px;
+            padding: 14px;
+            background: linear-gradient(
+                145deg,
+                #fff8ef,
+                #fffdf8
+            );
+            border: 1px solid #f5dfca;
+            border-radius: 16px;
+        }
+
+        .sidebar-user-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                var(--orange),
+                var(--amber)
+            );
+            color: white;
+            display: grid;
+            place-items: center;
+            font-weight: 800;
+        }
+
+        .sidebar-user strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .sidebar-user span {
+            display: block;
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .verified-admin {
+            margin-top: 11px;
+            padding-top: 10px;
+            border-top: 1px solid #f1dfce;
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        .main-content {
+            min-height: 100vh;
+            margin-left: var(--sidebar-width);
+            transition: margin-left 0.3s ease;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            height: 78px;
+            padding: 0 30px;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .mobile-toggle,
+        .desktop-toggle {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            background: #fff;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .mobile-toggle {
+            display: none;
+        }
+
+        .topbar-title h1 {
+            font-family: "Manrope", sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        .topbar-title p {
+            margin: 2px 0 0;
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top-icon {
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            border: 1px solid var(--border);
+            background: #fff;
+            color: #666;
+            position: relative;
+        }
+
+        .notification-dot {
+            position: absolute;
+            top: 7px;
+            right: 7px;
+            width: 7px;
+            height: 7px;
+            background: var(--orange);
+            border: 2px solid #fff;
+            border-radius: 50%;
+        }
+
+        .top-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 5px;
+        }
+
+        .top-profile-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(
+                135deg,
+                var(--orange),
+                var(--amber)
+            );
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .top-profile-text strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .top-profile-text span {
+            display: block;
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+            padding: 30px;
+            max-width: 1700px;
+            margin: auto;
+        }
+
+        .dashboard-section {
+            display: none;
+            animation: sectionIn 0.35s ease;
+        }
+
+        .dashboard-section.active {
+            display: block;
+        }
+
+        @keyframes sectionIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-heading {
+            margin-bottom: 25px;
+        }
+
+        .section-heading h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+            letter-spacing: -0.7px;
+            margin-bottom: 5px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           WELCOME
+        ========================================================= */
+
+        .welcome-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .welcome-title {
+            font-family: "Manrope", sans-serif;
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 7px;
+        }
+
+        .welcome-title span {
+            color: var(--orange);
+        }
+
+        .welcome-copy {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .date-chip {
+            padding: 10px 14px;
+            border-radius: 11px;
+            background: #fff;
+            border: 1px solid var(--border);
+            font-size: 11px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           OVERVIEW CARDS
+        ========================================================= */
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .overview-card {
+            position: relative;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: 0.25s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .overview-card::after {
+            content: "";
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            right: -35px;
+            bottom: -40px;
+            border-radius: 50%;
+            background: var(--orange-soft);
+        }
+
+        .overview-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .metric-icon {
+            width: 43px;
+            height: 43px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--orange-soft);
+            color: var(--orange);
+            font-size: 17px;
+        }
+
+        .metric-icon.amber {
+            background: var(--amber-soft);
+            color: var(--amber-dark);
+        }
+
+        .metric-icon.green {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .metric-icon.blue {
+            background: var(--blue-soft);
+            color: var(--blue);
+        }
+
+        .metric-change {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--green);
+            background: var(--green-soft);
+            padding: 5px 7px;
+            border-radius: 20px;
+        }
+
+        .metric-change.down {
+            color: var(--red);
+            background: var(--red-soft);
+        }
+
+        .metric-number {
+            margin-top: 17px;
+            font-family: "Manrope", sans-serif;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .metric-label {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 2px;
+        }
+
+        .metric-progress {
+            margin-top: 15px;
+            height: 4px;
+            border-radius: 10px;
+            background: #f1f1f1;
+            overflow: hidden;
+        }
+
+        .metric-progress span {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(
+                90deg,
+                var(--orange),
+                var(--amber)
+            );
+        }
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero-card {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            min-height: 330px;
+            border-radius: 22px;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    120deg,
+                    rgba(36, 20, 10, 0.97),
+                    rgba(75, 37, 12, 0.88)
+                );
+            margin-bottom: 22px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-content {
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-eyebrow {
+            width: fit-content;
+            padding: 6px 10px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 30px;
+            color: #ffd9a7;
+            background: rgba(255,255,255,0.06);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 17px;
+        }
+
+        .hero-content h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 34px;
+            line-height: 1.12;
+            max-width: 540px;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            color: #e9ded5;
+            max-width: 550px;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-orange {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 17px;
+            border-radius: 10px;
+            background: linear-gradient(
+                135deg,
+                var(--orange),
+                var(--amber)
+            );
+            color: white;
+            font-size: 12px;
+            font-weight: 800;
+            border: none;
+        }
+
+        .btn-orange:hover {
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .btn-light-custom {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 17px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.15);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .hero-image {
+            min-height: 330px;
+            position: relative;
+        }
+
+        .hero-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(38, 21, 11, 0.3),
+                    transparent
+                );
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* =========================================================
+           GRID
+        ========================================================= */
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 0.65fr;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+
+        .content-grid.equal {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .panel {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 19px 21px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .panel-title h3 {
+            font-family: "Manrope", sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 3px;
+        }
+
+        .panel-title p {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .view-link {
+            color: var(--orange-dark);
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           SHIPMENT CARD
+        ========================================================= */
+
+        .shipment-main {
+            padding: 21px;
+        }
+
+        .shipment-id-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tracking-id {
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .tracking-id span {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            font-weight: 500;
+            margin-top: 3px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 9px;
+            border-radius: 30px;
+            background: var(--orange-soft);
+            color: var(--orange-dark);
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .route-box {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 15px;
+            padding: 17px;
+            background: var(--cream);
+            border: 1px solid #f3e7da;
+            border-radius: 14px;
+        }
+
+        .route-point strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .route-point span {
+            display: block;
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 4px;
+        }
+
+        .route-point:last-child {
+            text-align: right;
+        }
+
+        .route-middle {
+            width: 100px;
+            text-align: center;
+            color: var(--orange);
+        }
+
+        .route-line {
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                var(--orange),
+                var(--amber)
+            );
+            position: relative;
+            margin: 8px 0;
+        }
+
+        .route-line::after {
+            content: "✈";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: white;
+            display: grid;
+            place-items: center;
+            font-size: 11px;
+        }
+
+        .shipment-info-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .mini-info {
+            padding: 11px;
+            background: #fafafa;
+            border-radius: 10px;
+        }
+
+        .mini-info span {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-bottom: 4px;
+        }
+
+        .mini-info strong {
+            font-size: 11px;
+        }
+
+        .shipment-progress {
+            margin-top: 22px;
+        }
+
+        .progress-track {
+            height: 5px;
+            border-radius: 20px;
+            background: #ececec;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 74%;
+            border-radius: inherit;
+            background: linear-gradient(
+                90deg,
+                var(--orange),
+                var(--amber)
+            );
+        }
+
+        .progress-labels {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-top: 9px;
+        }
+
+        .progress-labels div {
+            font-size: 8px;
+            color: #999;
+        }
+
+        .progress-labels .done {
+            color: var(--orange-dark);
+            font-weight: 700;
+        }
+
+        /* =========================================================
+           ACTIVITY
+        ========================================================= */
+
+        .activity-list {
+            padding: 10px 21px 21px;
+        }
+
+        .activity-item {
+            display: grid;
+            grid-template-columns: 35px 1fr auto;
+            gap: 11px;
+            align-items: start;
+            padding: 13px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .activity-item:last-child {
+            border-bottom: 0;
+        }
+
+        .activity-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            background: var(--orange-soft);
+            color: var(--orange);
+            display: grid;
+            place-items: center;
+            font-size: 12px;
+        }
+
+        .activity-text strong {
+            display: block;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .activity-text span {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+        .activity-time {
+            color: #999;
+            font-size: 9px;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           PERFORMANCE
+        ========================================================= */
+
+        .performance-list {
+            padding: 7px 21px 20px;
+        }
+
+        .performance-item {
+            padding: 13px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .performance-item:last-child {
+            border-bottom: 0;
+        }
+
+        .performance-head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .performance-head span {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        .performance-head strong {
+            font-size: 11px;
+        }
+
+        .bar {
+            height: 6px;
+            border-radius: 20px;
+            background: #eeeeee;
+            overflow: hidden;
+        }
+
+        .bar span {
+            height: 100%;
+            display: block;
+            border-radius: inherit;
+            background: linear-gradient(
+                90deg,
+                var(--orange),
+                var(--amber)
+            );
+        }
+
+        /* =========================================================
+           TABLE
+        ========================================================= */
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .custom-table {
+            width: 100%;
+            min-width: 850px;
+            border-collapse: collapse;
+        }
+
+        .custom-table th {
+            padding: 13px 18px;
+            text-align: left;
+            background: #fafafa;
+            color: #888;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .custom-table td {
+            padding: 15px 18px;
+            border-bottom: 1px solid #f1f1f1;
+            font-size: 11px;
+            vertical-align: middle;
+        }
+
+        .custom-table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        .custom-table tbody tr:hover {
+            background: #fffaf6;
+        }
+
+        .package-cell {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 190px;
+        }
+
+        .package-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 9px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .package-cell strong {
+            display: block;
+            font-size: 11px;
+        }
+
+        .package-cell span {
+            display: block;
+            color: #999;
+            font-size: 9px;
+            margin-top: 2px;
+        }
+
+        .table-status {
+            display: inline-block;
+            padding: 5px 8px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .table-status.delivered {
+            background: var(--green-soft);
+            color: var(--green);
+        }
+
+        .table-status.transit {
+            background: var(--orange-soft);
+            color: var(--orange-dark);
+        }
+
+        .table-status.pending {
+            background: var(--amber-soft);
+            color: var(--amber-dark);
+        }
+
+        .table-status.cancelled {
+            background: var(--red-soft);
+            color: var(--red);
+        }
+
+        .table-action {
+            color: var(--orange-dark);
+            font-weight: 800;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           SECTION 2 — SHIPMENTS
+        ========================================================= */
+
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            font-size: 12px;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 43px;
+            border: 1px solid var(--border);
+            background: white;
+            border-radius: 11px;
+            padding: 0 15px 0 38px;
+            outline: none;
+            font-size: 11px;
+        }
+
+        .search-box input:focus {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(249,115,22,0.08);
+        }
+
+        .filter-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .filter-link {
+            padding: 9px 12px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: white;
+            font-size: 10px;
+            color: #666;
+            font-weight: 700;
+        }
+
+        .filter-link.active,
+        .filter-link:hover {
+            color: var(--orange-dark);
+            background: var(--orange-soft);
+            border-color: #fed7aa;
+        }
+
+        /* =========================================================
+           SECTION 3 — TRACK
+        ========================================================= */
+
+        .track-hero {
+            background:
+                linear-gradient(
+                    120deg,
+                    #fff7ed,
+                    #fffbeb
+                );
+            border: 1px solid #fed7aa;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        .track-hero h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .track-hero p {
+            color: var(--muted);
+            font-size: 12px;
+            margin: 6px 0 20px;
+        }
+
+        .track-form {
+            display: flex;
+            gap: 10px;
+            max-width: 800px;
+        }
+
+        .track-form input {
+            flex: 1;
+            height: 48px;
+            border: 1px solid #f0c99f;
+            border-radius: 11px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 12px;
+            background: white;
+        }
+
+        .track-form input:focus {
+            border-color: var(--orange);
+        }
+
+        .track-result {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 20px;
+        }
+
+        .tracking-summary {
+            padding: 22px;
+        }
+
+        .tracking-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .tracking-number {
+            font-family: "Manrope", sans-serif;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .tracking-meta {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tracking-meta-item {
+            background: #fafafa;
+            border-radius: 11px;
+            padding: 12px;
+        }
+
+        .tracking-meta-item span {
+            display: block;
+            color: #999;
+            font-size: 9px;
+            margin-bottom: 5px;
+        }
+
+        .tracking-meta-item strong {
+            font-size: 11px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: #ececec;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 0 0 20px 15px;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -25px;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid #ddd;
+            z-index: 2;
+        }
+
+        .timeline-item.done .timeline-dot {
+            border-color: var(--orange);
+            background: var(--orange);
+        }
+
+        .timeline-item.current .timeline-dot {
+            border-color: var(--amber);
+            background: var(--amber);
+            box-shadow: 0 0 0 5px rgba(245,158,11,0.12);
+        }
+
+        .timeline-item strong {
+            font-size: 11px;
+            display: block;
+        }
+
+        .timeline-item span {
+            display: block;
+            color: #999;
+            font-size: 9px;
+            margin-top: 3px;
+        }
+
+        /* =========================================================
+           STATIC MAP
+        ========================================================= */
+
+        .map-card {
+            min-height: 450px;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffaf2,
+                    #f5f5f2
+                );
+        }
+
+        .map-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.55;
+            background-image:
+                linear-gradient(
+                    30deg,
+                    transparent 48%,
+                    #e6ddd2 49%,
+                    transparent 51%
+                ),
+                linear-gradient(
+                    120deg,
+                    transparent 48%,
+                    #e6ddd2 49%,
+                    transparent 51%
+                );
+            background-size: 80px 80px;
+        }
+
+        .map-road {
+            position: absolute;
+            height: 8px;
+            border-radius: 20px;
+            background: rgba(249,115,22,0.15);
+            transform: rotate(-22deg);
+        }
+
+        .road-one {
+            width: 430px;
+            left: -40px;
+            top: 180px;
+        }
+
+        .road-two {
+            width: 380px;
+            right: -80px;
+            top: 270px;
+            transform: rotate(18deg);
+        }
+
+        .road-three {
+            width: 330px;
+            left: 100px;
+            bottom: 80px;
+            transform: rotate(-8deg);
+        }
+
+        .map-route {
+            position: absolute;
+            left: 20%;
+            top: 45%;
+            width: 58%;
+            height: 4px;
+            background: linear-gradient(
+                90deg,
+                var(--orange),
+                var(--amber)
+            );
+            transform: rotate(-13deg);
+        }
+
+        .map-marker {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: white;
+            background: linear-gradient(
+                135deg,
+                var(--orange),
+                var(--amber)
+            );
+            box-shadow: 0 10px 25px rgba(249,115,22,0.28);
+            z-index: 5;
+        }
+
+        .marker-start {
+            left: 15%;
+            top: 53%;
+        }
+
+        .marker-current {
+            left: 50%;
+            top: 39%;
+        }
+
+        .marker-end {
+            right: 14%;
+            top: 27%;
+        }
+
+        .map-info {
+            position: absolute;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            padding: 16px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.94);
+            border: 1px solid var(--border);
+            z-index: 10;
+        }
+
+        .map-info strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .map-info span {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            margin-top: 4px;
+        }
+
+        /* =========================================================
+           SECTION 4 PAYMENTS
+        ========================================================= */
+
+        .payment-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .payment-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+        }
+
+        .payment-card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--orange-soft);
+            color: var(--orange);
+            display: grid;
+            place-items: center;
+            margin-bottom: 15px;
+        }
+
+        .payment-card strong {
+            font-family: "Manrope", sans-serif;
+            display: block;
+            font-size: 21px;
+        }
+
+        .payment-card span {
+            color: var(--muted);
+            font-size: 10px;
+        }
+
+        .payment-layout {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 20px;
+        }
+
+        .method-card {
+            padding: 20px;
+        }
+
+        .method-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .method-item:last-child {
+            border-bottom: 0;
+        }
+
+        .method-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: var(--amber-soft);
+            color: var(--amber-dark);
+            display: grid;
+            place-items: center;
+        }
+
+        .method-item strong {
+            font-size: 11px;
+            display: block;
+        }
+
+        .method-item span {
+            font-size: 9px;
+            color: #999;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .method-action {
+            margin-left: auto;
+            color: var(--orange-dark);
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        /* =========================================================
+           SECTION 5 PROFILE
+        ========================================================= */
+
+        .profile-header-card {
+            background:
+                linear-gradient(
+                    120deg,
+                    #fff7ed,
+                    #ffffff
+                );
+            border: 1px solid #fed7aa;
+            border-radius: 20px;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-main {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .profile-big-avatar {
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-size: 22px;
+            font-weight: 800;
+            background: linear-gradient(
+                135deg,
+                var(--orange),
+                var(--amber)
+            );
+            box-shadow: 0 10px 25px rgba(249,115,22,0.2);
+        }
+
+        .profile-main h2 {
+            font-family: "Manrope", sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .profile-main p {
+            color: var(--muted);
+            font-size: 11px;
+            margin: 3px 0;
+        }
+
+        .verified-pill {
+            display: inline-flex;
+            gap: 5px;
+            align-items: center;
+            color: var(--green);
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .profile-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .outline-btn {
+            padding: 9px 13px;
+            border: 1px solid var(--border);
+            border-radius: 9px;
+            background: white;
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .outline-btn:hover {
+            border-color: #fdba74;
+            color: var(--orange-dark);
+            background: var(--orange-soft);
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .detail-list {
+            padding: 7px 21px 21px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 13px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .detail-row:last-child {
+            border-bottom: 0;
+        }
+
+        .detail-row span {
+            color: #999;
+            font-size: 10px;
+        }
+
+        .detail-row strong {
+            font-size: 10px;
+            text-align: right;
+        }
+
+        /* =========================================================
+           EXTRA ADMIN CONTENT
+        ========================================================= */
+
+        .admin-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .insight-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 18px;
+        }
+
+        .insight-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .insight-head h4 {
+            font-family: "Manrope", sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .insight-head i {
+            color: var(--orange);
+        }
+
+        .insight-big {
+            font-family: "Manrope", sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .insight-desc {
+            color: var(--muted);
+            font-size: 9px;
+            line-height: 1.5;
+            margin-top: 4px;
+        }
+
+        .insight-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .insight-tags span {
+            padding: 5px 7px;
+            background: var(--orange-soft);
+            color: var(--orange-dark);
+            border-radius: 20px;
+            font-size: 8px;
+            font-weight: 700;
+        }
+
+        .notice-card {
+            display: flex;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 14px;
+            background: linear-gradient(
+                135deg,
+                #fff7ed,
+                #fffbeb
+            );
+            border: 1px solid #fed7aa;
+            margin-bottom: 20px;
+        }
+
+        .notice-icon {
+            width: 35px;
+            height: 35px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            background: white;
+            border-radius: 9px;
+            color: var(--orange);
+        }
+
+        .notice-card strong {
+            font-size: 11px;
+            display: block;
+        }
+
+        .notice-card p {
+            margin: 3px 0 0;
+            font-size: 9px;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* =========================================================
+           OVERLAY
+        ========================================================= */
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 12, 7, 0.45);
+            z-index: 950;
+        }
+
+        /* =========================================================
+           COLLAPSED SIDEBAR
+        ========================================================= */
+
+        body.sidebar-collapsed .sidebar {
+            width: 82px;
+        }
+
+        body.sidebar-collapsed .main-content {
+            margin-left: 82px;
+        }
+
+        body.sidebar-collapsed .brand-copy,
+        body.sidebar-collapsed .admin-label,
+        body.sidebar-collapsed .nav-link-custom span,
+        body.sidebar-collapsed .nav-count,
+        body.sidebar-collapsed .sidebar-user .sidebar-user-info,
+        body.sidebar-collapsed .verified-admin {
+            display: none;
+        }
+
+        body.sidebar-collapsed .sidebar-brand {
+            justify-content: center;
+            padding: 0;
+        }
+
+        body.sidebar-collapsed .nav-link-custom {
+            justify-content: center;
+            padding: 0;
+        }
+
+        body.sidebar-collapsed .sidebar-user {
+            padding: 10px;
+        }
+
+        body.sidebar-collapsed .sidebar-user-top {
+            justify-content: center;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1200px) {
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-card {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                min-height: 240px;
+                max-height: 280px;
+            }
+
+            .content-grid,
+            .track-result,
+            .payment-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 991px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.mobile-open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            body.sidebar-collapsed .main-content {
+                margin-left: 0;
+            }
+
+            .desktop-toggle {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .admin-summary-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .topbar {
+                height: 70px;
+                padding: 0 15px;
+            }
+
+            .topbar-title p,
+            .top-profile-text {
+                display: none;
+            }
+
+            .topbar-title h1 {
+                font-size: 15px;
+            }
+
+            .top-icon {
+                width: 37px;
+                height: 37px;
+            }
+
+            .page {
+                padding: 20px 15px;
+            }
+
+            .welcome-row {
+                display: block;
+            }
+
+            .welcome-title {
+                font-size: 25px;
+            }
+
+            .date-chip {
+                width: fit-content;
+                margin-top: 12px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .overview-card {
+                padding: 15px;
+            }
+
+            .metric-number {
+                font-size: 22px;
+            }
+
+            .hero-content {
+                padding: 25px;
+            }
+
+            .hero-content h2 {
+                font-size: 27px;
+            }
+
+            .hero-image {
+                min-height: 190px;
+            }
+
+            .route-box {
+                grid-template-columns: 1fr;
+            }
+
+            .route-point:last-child {
+                text-align: left;
+            }
+
+            .route-middle {
+                width: 100%;
+            }
+
+            .shipment-info-row {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-labels {
+                display: none;
+            }
+
+            .payment-summary {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .payment-card {
+                padding: 15px;
+            }
+
+            .track-form {
+                flex-direction: column;
+            }
+
+            .profile-header-card {
+                display: block;
+            }
+
+            .profile-actions {
+                margin-top: 17px;
+            }
+
+            .admin-summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .overview-grid,
+            .payment-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .top-profile {
+                margin-left: 0;
+            }
+
+            .welcome-title {
+                font-size: 23px;
+            }
+
+            .section-heading h2 {
+                font-size: 22px;
+            }
+
+            .hero-content h2 {
+                font-size: 24px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-orange,
+            .btn-light-custom {
+                justify-content: center;
+            }
+
+            .tracking-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-main {
+                align-items: flex-start;
+            }
+
+            .profile-big-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .page {
+                padding: 16px 11px;
+            }
+
+            .topbar {
+                padding: 0 10px;
+            }
+
+            .welcome-title {
+                font-size: 21px;
+            }
+
+            .overview-card {
+                padding: 13px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ============================================================
+     SIDEBAR
+============================================================ -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+        <a href="#dashboard" class="brand-logo" aria-label="SwiftGo Dashboard">
+            <i class="fa-solid fa-truck-fast"></i>
+        </a>
+
+        <div class="brand-copy">
+            <strong>SWIFTGO</strong>
+            <span>ADMIN CONTROL</span>
+        </div>
+    </div>
+
+    <div class="admin-label">
+        Management
+    </div>
+
+    <nav class="sidebar-nav">
+
+        <div class="nav-item">
+            <a href="#dashboard" class="nav-link-custom active">
+                <i class="fa-solid fa-grid-2"></i>
+                <span>Dashboard</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#shipments" class="nav-link-custom">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Shipments</span>
+                <span class="nav-count">24</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#tracking" class="nav-link-custom">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span>Track Parcels</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#payments" class="nav-link-custom">
+                <i class="fa-solid fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+        </div>
+
+        <div class="nav-item">
+            <a href="#profile" class="nav-link-custom">
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Admin Profile</span>
+            </a>
+        </div>
+
+    </nav>
+
+    <div class="sidebar-user">
+
+        <div class="sidebar-user-top">
+
+            <div class="admin-avatar">
+                AK
+            </div>
+
+            <div class="sidebar-user-info">
+                <strong>Ajith Kumar</strong>
+                <span>Platform Administrator</span>
+            </div>
+
+        </div>
+
+        <div class="verified-admin">
+            <i class="fa-solid fa-circle-check"></i>
+            Verified Admin Account
+        </div>
+
+    </div>
+
+</aside>
+
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+<!-- ============================================================
+     MAIN
+============================================================ -->
+
+<main class="main-content">
+
+    <!-- TOPBAR -->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+                class="mobile-toggle"
+                id="mobileToggle"
+                aria-label="Open menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <button
+                class="desktop-toggle"
+                id="desktopToggle"
+                aria-label="Collapse sidebar"
+            >
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+
+            <div class="topbar-title">
+                <h1 id="topbarTitle">Admin Dashboard</h1>
+                <p id="topbarSubtitle">
+                    Monitor your SwiftGo delivery operations.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <a
+                href="404.html"
+                class="top-icon"
+                title="Notifications"
+                aria-label="Notifications"
+            >
+                <i class="fa-regular fa-bell"></i>
+                <span class="notification-dot"></span>
+            </a>
+
+            <a
+                href="404.html"
+                class="top-icon"
+                title="Help Center"
+                aria-label="Help Center"
+            >
+                <i class="fa-regular fa-circle-question"></i>
+            </a>
+
+            <a href="#profile" class="top-profile">
+
+                <div class="top-profile-avatar">
+                    AK
+                </div>
+
+                <div class="top-profile-text">
+                    <strong>Ajith Kumar</strong>
+                    <span>Administrator</span>
+                </div>
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <div class="page">
+
+
+        <!-- ====================================================
+             DASHBOARD
+        ==================================================== -->
+
+        <section
+            class="dashboard-section active"
+            id="dashboard"
+            data-title="Admin Dashboard"
+            data-subtitle="Monitor your SwiftGo delivery operations."
+        >
+
+            <div class="welcome-row">
+
+                <div>
+                    <h2 class="welcome-title">
+                        Welcome back, <span>User</span> 👋
+                    </h2>
+
+                    <p class="welcome-copy">
+                        Here's your delivery activity, operational performance
+                        and shipment overview for today.
+                    </p>
+                </div>
+
+                <div class="date-chip">
+                    <i class="fa-regular fa-calendar"></i>
+                    24 September 2026
+                </div>
+
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div class="overview-grid">
+
+                <div class="overview-card">
+
+                    <div class="overview-top">
+                        <div class="metric-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+
+                        <span class="metric-change">
+                            +12.4%
+                        </span>
+                    </div>
+
+                    <div class="metric-number">
+                        1,284
+                    </div>
+
+                    <div class="metric-label">
+                        Total Shipments
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:82%"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <div class="overview-top">
+                        <div class="metric-icon amber">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+
+                        <span class="metric-change">
+                            +8.2%
+                        </span>
+                    </div>
+
+                    <div class="metric-number">
+                        186
+                    </div>
+
+                    <div class="metric-label">
+                        In Transit
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:68%"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <div class="overview-top">
+                        <div class="metric-icon green">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+
+                        <span class="metric-change">
+                            +15.8%
+                        </span>
+                    </div>
+
+                    <div class="metric-number">
+                        1,042
+                    </div>
+
+                    <div class="metric-label">
+                        Delivered
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:91%"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="overview-card">
+
+                    <div class="overview-top">
+                        <div class="metric-icon blue">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+
+                        <span class="metric-change down">
+                            -3.1%
+                        </span>
+                    </div>
+
+                    <div class="metric-number">
+                        56
+                    </div>
+
+                    <div class="metric-label">
+                        Pending Shipments
+                    </div>
+
+                    <div class="metric-progress">
+                        <span style="width:35%"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HERO -->
+
+            <div class="hero-card">
+
+                <div class="hero-content">
+
+                    <div class="hero-eyebrow">
+                        <i class="fa-solid fa-bolt"></i>
+                        Smart Delivery Operations
+                    </div>
+
+                    <h2>
+                        Move every shipment with confidence.
+                    </h2>
+
+                    <p>
+                        Manage shipments, monitor delivery performance,
+                        review customer activity and keep your entire
+                        courier operation moving from one powerful dashboard.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="404.html" class="btn-orange">
+                            <i class="fa-solid fa-plus"></i>
+                            Create Shipment
+                        </a>
+
+                        <a href="404.html" class="btn-light-custom">
+                            <i class="fa-solid fa-location-dot"></i>
+                            Track a Parcel
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="hero-image">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1400&q=85"
+                        alt="SwiftGo logistics warehouse and delivery operations"
+                        loading="eager"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- OPERATIONAL INSIGHTS -->
+
+            <div class="admin-summary-grid">
+
+                <div class="insight-card">
+
+                    <div class="insight-head">
+                        <h4>Today's Pickup Volume</h4>
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+
+                    <div class="insight-big">
+                        84
+                    </div>
+
+                    <div class="insight-desc">
+                        Packages scheduled for pickup across active
+                        delivery zones today.
+                    </div>
+
+                    <div class="insight-tags">
+                        <span>56 Completed</span>
+                        <span>28 Remaining</span>
+                    </div>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <div class="insight-head">
+                        <h4>Active Delivery Fleet</h4>
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+
+                    <div class="insight-big">
+                        48 / 52
+                    </div>
+
+                    <div class="insight-desc">
+                        Delivery vehicles currently active across
+                        the SwiftGo operational network.
+                    </div>
+
+                    <div class="insight-tags">
+                        <span>48 Active</span>
+                        <span>4 Maintenance</span>
+                    </div>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <div class="insight-head">
+                        <h4>Support Requests</h4>
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <div class="insight-big">
+                        17
+                    </div>
+
+                    <div class="insight-desc">
+                        Customer support conversations currently
+                        awaiting operational review.
+                    </div>
+
+                    <div class="insight-tags">
+                        <span>9 Open</span>
+                        <span>8 Resolved</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTICE -->
+
+            <div class="notice-card">
+
+                <div class="notice-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+                    <strong>Operational Attention Required</strong>
+
+                    <p>
+                        6 shipments are approaching their expected delivery
+                        window. Review active routes and coordinate with
+                        the respective delivery hubs if required.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVE SHIPMENT + ACTIVITY -->
+
+            <div class="content-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Active Shipment</h3>
+                            <p>Current high-priority delivery</p>
+                        </div>
+
+                        <span class="status-badge">
+                            <i class="fa-solid fa-circle"></i>
+                            In Transit
+                        </span>
+
+                    </div>
+
+
+                    <div class="shipment-main">
+
+                        <div class="shipment-id-row">
+
+                            <div class="tracking-id">
+                                SG458921763
+                                <span>
+                                    Electronics Accessories
+                                </span>
+                            </div>
+
+                            <a href="404.html" class="view-link">
+                                View Tracking
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+
+                        <div class="route-box">
+
+                            <div class="route-point">
+                                <strong>Bengaluru</strong>
+                                <span>Pickup Hub</span>
+                            </div>
+
+                            <div class="route-middle">
+
+                                <i class="fa-solid fa-truck-fast"></i>
+
+                                <div class="route-line"></div>
+
+                                <small>
+                                    SwiftGo Express
+                                </small>
+
+                            </div>
+
+                            <div class="route-point">
+                                <strong>Chennai</strong>
+                                <span>Destination Hub</span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="shipment-info-row">
+
+                            <div class="mini-info">
+                                <span>Expected Delivery</span>
+                                <strong>Today, 4:30 PM</strong>
+                            </div>
+
+                            <div class="mini-info">
+                                <span>Package Type</span>
+                                <strong>Electronics</strong>
+                            </div>
+
+                            <div class="mini-info">
+                                <span>Service</span>
+                                <strong>Express Delivery</strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="shipment-progress">
+
+                            <div class="progress-track">
+                                <div class="progress-fill"></div>
+                            </div>
+
+                            <div class="progress-labels">
+                                <div class="done">
+                                    Order Placed
+                                </div>
+
+                                <div class="done">
+                                    Picked Up
+                                </div>
+
+                                <div class="done">
+                                    In Transit
+                                </div>
+
+                                <div class="done">
+                                    Out for Delivery
+                                </div>
+
+                                <div>
+                                    Delivered
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Delivery Activity</h3>
+                            <p>Latest operational updates</p>
+                        </div>
+
+                        <a href="404.html" class="view-link">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="activity-list">
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-box"></i>
+                            </div>
+
+                            <div class="activity-text">
+                                <strong>
+                                    Package picked up from Bengaluru Hub
+                                </strong>
+                                <span>
+                                    SG458921763
+                                </span>
+                            </div>
+
+                            <div class="activity-time">
+                                08:42 AM
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-warehouse"></i>
+                            </div>
+
+                            <div class="activity-text">
+                                <strong>
+                                    Reached Electronic City Sorting Center
+                                </strong>
+                                <span>
+                                    Shipment processed successfully
+                                </span>
+                            </div>
+
+                            <div class="activity-time">
+                                10:15 AM
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-truck"></i>
+                            </div>
+
+                            <div class="activity-text">
+                                <strong>
+                                    Departed Bengaluru Hub
+                                </strong>
+                                <span>
+                                    Vehicle SG-TN-0842
+                                </span>
+                            </div>
+
+                            <div class="activity-time">
+                                01:30 PM
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+
+                            <div class="activity-text">
+                                <strong>
+                                    Reached Chennai Distribution Center
+                                </strong>
+                                <span>
+                                    Package entered final delivery network
+                                </span>
+                            </div>
+
+                            <div class="activity-time">
+                                05:10 PM
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-icon">
+                                <i class="fa-solid fa-route"></i>
+                            </div>
+
+                            <div class="activity-text">
+                                <strong>
+                                    Package currently in transit
+                                </strong>
+                                <span>
+                                    Next checkpoint: Chennai City Hub
+                                </span>
+                            </div>
+
+                            <div class="activity-time">
+                                Today
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERFORMANCE -->
+
+            <div class="content-grid equal">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Delivery Performance</h3>
+                            <p>Operational quality indicators</p>
+                        </div>
+
+                    </div>
+
+                    <div class="performance-list">
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>On-Time Delivery</span>
+                                <strong>96%</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:96%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Successful Deliveries</span>
+                                <strong>98%</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:98%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Route Efficiency</span>
+                                <strong>91%</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:91%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Customer Satisfaction</span>
+                                <strong>4.8 / 5</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:96%"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Network Snapshot</h3>
+                            <p>Current SwiftGo infrastructure</p>
+                        </div>
+
+                    </div>
+
+                    <div class="performance-list">
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Active Hubs</span>
+                                <strong>28</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:82%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Operational Fleet</span>
+                                <strong>92%</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:92%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Coverage Network</span>
+                                <strong>87%</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:87%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="performance-item">
+
+                            <div class="performance-head">
+                                <span>Hub Processing Capacity</span>
+                                <strong>89%</strong>
+                            </div>
+
+                            <div class="bar">
+                                <span style="width:89%"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT SHIPMENTS -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <h3>Recent Shipments</h3>
+                        <p>Latest courier activity across the network</p>
+                    </div>
+
+                    <a href="#shipments" class="view-link">
+                        Manage Shipments
+                    </a>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="custom-table">
+
+                        <thead>
+                            <tr>
+                                <th>Tracking ID</th>
+                                <th>Package</th>
+                                <th>Route</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <strong>SG458921763</strong>
+                                </td>
+
+                                <td>
+                                    Electronics Accessories
+                                </td>
+
+                                <td>
+                                    Bengaluru → Chennai
+                                </td>
+
+                                <td>
+                                    24 Sep 2026
+                                </td>
+
+                                <td>
+                                    ₹349
+                                </td>
+
+                                <td>
+                                    <span class="table-status transit">
+                                        In Transit
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>SG458921521</strong>
+                                </td>
+
+                                <td>
+                                    Legal Documents
+                                </td>
+
+                                <td>
+                                    Chennai → Coimbatore
+                                </td>
+
+                                <td>
+                                    23 Sep 2026
+                                </td>
+
+                                <td>
+                                    ₹199
+                                </td>
+
+                                <td>
+                                    <span class="table-status delivered">
+                                        Delivered
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>SG458920875</strong>
+                                </td>
+
+                                <td>
+                                    Fashion Package
+                                </td>
+
+                                <td>
+                                    Bengaluru → Hyderabad
+                                </td>
+
+                                <td>
+                                    22 Sep 2026
+                                </td>
+
+                                <td>
+                                    ₹499
+                                </td>
+
+                                <td>
+                                    <span class="table-status delivered">
+                                        Delivered
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>SG458920614</strong>
+                                </td>
+
+                                <td>
+                                    Gift Package
+                                </td>
+
+                                <td>
+                                    Vellore → Chennai
+                                </td>
+
+                                <td>
+                                    21 Sep 2026
+                                </td>
+
+                                <td>
+                                    ₹249
+                                </td>
+
+                                <td>
+                                    <span class="table-status delivered">
+                                        Delivered
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <strong>SG458920301</strong>
+                                </td>
+
+                                <td>
+                                    Books Package
+                                </td>
+
+                                <td>
+                                    Chennai → Madurai
+                                </td>
+
+                                <td>
+                                    20 Sep 2026
+                                </td>
+
+                                <td>
+                                    ₹299
+                                </td>
+
+                                <td>
+                                    <span class="table-status pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        View
+                                    </a>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================================
+             SHIPMENTS
+        ==================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="shipments"
+            data-title="Shipment Management"
+            data-subtitle="View, monitor and manage all courier shipments."
+        >
+
+            <div class="section-heading">
+
+                <h2>Shipment Management</h2>
+
+                <p>
+                    View, monitor and manage every shipment moving through
+                    the SwiftGo delivery network.
+                </p>
+
+            </div>
+
+
+            <div class="overview-grid">
+
+                <div class="overview-card">
+                    <div class="overview-top">
+                        <div class="metric-icon">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                    </div>
+
+                    <div class="metric-number">1,284</div>
+                    <div class="metric-label">Total Shipments</div>
+
+                    <div class="metric-progress">
+                        <span style="width:88%"></span>
+                    </div>
+                </div>
+
+
+                <div class="overview-card">
+                    <div class="overview-top">
+                        <div class="metric-icon green">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                    </div>
+
+                    <div class="metric-number">1,042</div>
+                    <div class="metric-label">Delivered</div>
+
+                    <div class="metric-progress">
+                        <span style="width:91%"></span>
+                    </div>
+                </div>
+
+
+                <div class="overview-card">
+                    <div class="overview-top">
+                        <div class="metric-icon amber">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                    </div>
+
+                    <div class="metric-number">186</div>
+                    <div class="metric-label">In Transit</div>
+
+                    <div class="metric-progress">
+                        <span style="width:68%"></span>
+                    </div>
+                </div>
+
+
+                <div class="overview-card">
+                    <div class="overview-top">
+                        <div class="metric-icon blue">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                    </div>
+
+                    <div class="metric-number">56</div>
+                    <div class="metric-label">Pending</div>
+
+                    <div class="metric-progress">
+                        <span style="width:35%"></span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="filter-bar">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        placeholder="Search tracking ID, package or customer..."
+                    >
+
+                </div>
+
+
+                <div class="filter-links">
+
+                    <a href="404.html" class="filter-link active">
+                        All
+                    </a>
+
+                    <a href="404.html" class="filter-link">
+                        Pending
+                    </a>
+
+                    <a href="404.html" class="filter-link">
+                        In Transit
+                    </a>
+
+                    <a href="404.html" class="filter-link">
+                        Delivered
+                    </a>
+
+                    <a href="404.html" class="filter-link">
+                        Cancelled
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div class="panel-title">
+                        <h3>All Shipments</h3>
+                        <p>Latest shipment records</p>
+                    </div>
+
+                    <a href="404.html" class="btn-orange">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Shipment
+                    </a>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="custom-table">
+
+                        <thead>
+                            <tr>
+                                <th>Shipment</th>
+                                <th>Tracking ID</th>
+                                <th>Pickup</th>
+                                <th>Delivery</th>
+                                <th>Shipping Date</th>
+                                <th>Expected</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    <div class="package-cell">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=300&q=80"
+                                            alt="Laptop accessories shipment package"
+                                            class="package-image"
+                                            loading="lazy"
+                                        >
+
+                                        <div>
+                                            <strong>Laptop Accessories</strong>
+                                            <span>Electronics</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>SG458921763</td>
+                                <td>Bengaluru</td>
+                                <td>Chennai</td>
+                                <td>24 Sep 2026</td>
+                                <td>24 Sep 2026</td>
+                                <td>₹349</td>
+
+                                <td>
+                                    <span class="table-status transit">
+                                        In Transit
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        Details
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="package-cell">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=300&q=80"
+                                            alt="Legal documents shipment"
+                                            class="package-image"
+                                            loading="lazy"
+                                        >
+
+                                        <div>
+                                            <strong>Legal Documents</strong>
+                                            <span>Documents</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>SG458921521</td>
+                                <td>Chennai</td>
+                                <td>Coimbatore</td>
+                                <td>23 Sep 2026</td>
+                                <td>23 Sep 2026</td>
+                                <td>₹199</td>
+
+                                <td>
+                                    <span class="table-status delivered">
+                                        Delivered
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        Details
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="package-cell">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=300&q=80"
+                                            alt="Fashion package shipment"
+                                            class="package-image"
+                                            loading="lazy"
+                                        >
+
+                                        <div>
+                                            <strong>Fashion Package</strong>
+                                            <span>Clothing</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>SG458920875</td>
+                                <td>Bengaluru</td>
+                                <td>Hyderabad</td>
+                                <td>22 Sep 2026</td>
+                                <td>24 Sep 2026</td>
+                                <td>₹499</td>
+
+                                <td>
+                                    <span class="table-status delivered">
+                                        Delivered
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        Details
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="package-cell">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=300&q=80"
+                                            alt="Gift package shipment"
+                                            class="package-image"
+                                            loading="lazy"
+                                        >
+
+                                        <div>
+                                            <strong>Gift Package</strong>
+                                            <span>Personal</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>SG458920614</td>
+                                <td>Vellore</td>
+                                <td>Chennai</td>
+                                <td>21 Sep 2026</td>
+                                <td>22 Sep 2026</td>
+                                <td>₹249</td>
+
+                                <td>
+                                    <span class="table-status delivered">
+                                        Delivered
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        Details
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <div class="package-cell">
+
+                                        <img
+                                            src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d8?auto=format&fit=crop&w=300&q=80"
+                                            alt="Books shipment package"
+                                            class="package-image"
+                                            loading="lazy"
+                                        >
+
+                                        <div>
+                                            <strong>Books Package</strong>
+                                            <span>Books</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+
+                                <td>SG458920301</td>
+                                <td>Chennai</td>
+                                <td>Madurai</td>
+                                <td>20 Sep 2026</td>
+                                <td>25 Sep 2026</td>
+                                <td>₹299</td>
+
+                                <td>
+                                    <span class="table-status pending">
+                                        Pending
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="404.html" class="table-action">
+                                        Details
+                                    </a>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================================
+             TRACKING
+        ==================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="tracking"
+            data-title="Parcel Tracking"
+            data-subtitle="Monitor package locations and delivery progress."
+        >
+
+            <div class="section-heading">
+
+                <h2>Parcel Tracking</h2>
+
+                <p>
+                    Monitor active courier movements and review the latest
+                    tracking milestones.
+                </p>
+
+            </div>
+
+
+            <div class="track-hero">
+
+                <h2>Track Your Package</h2>
+
+                <p>
+                    Enter a shipment tracking number to review its current
+                    location, route and delivery status.
+                </p>
+
+                <div class="track-form">
+
+                    <input
+                        type="text"
+                        placeholder="Enter tracking ID — SG458921763"
+                    >
+
+                    <a href="404.html" class="btn-orange">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Track Package
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="track-result">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>SG458921763</h3>
+                            <p>Electronics Accessories</p>
+                        </div>
+
+                        <span class="status-badge">
+                            <i class="fa-solid fa-circle"></i>
+                            In Transit
+                        </span>
+
+                    </div>
+
+
+                    <div class="tracking-summary">
+
+                        <div class="tracking-meta">
+
+                            <div class="tracking-meta-item">
+                                <span>Current Location</span>
+                                <strong>
+                                    Chennai Distribution Hub
+                                </strong>
+                            </div>
+
+                            <div class="tracking-meta-item">
+                                <span>Estimated Delivery</span>
+                                <strong>
+                                    Today
+                                </strong>
+                            </div>
+
+                            <div class="tracking-meta-item">
+                                <span>Service</span>
+                                <strong>
+                                    SwiftGo Express
+                                </strong>
+                            </div>
+
+                            <div class="tracking-meta-item">
+                                <span>Package Type</span>
+                                <strong>
+                                    Electronics
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="timeline">
+
+                            <div class="timeline-item done">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Shipment Created
+                                </strong>
+
+                                <span>
+                                    23 Sep 2026 · 09:20 AM
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-item done">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Package Picked Up
+                                </strong>
+
+                                <span>
+                                    23 Sep 2026 · 12:40 PM
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-item done">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Bengaluru Sorting Hub
+                                </strong>
+
+                                <span>
+                                    23 Sep 2026 · 04:15 PM
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-item done">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Departed Bengaluru
+                                </strong>
+
+                                <span>
+                                    23 Sep 2026 · 08:30 PM
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-item current">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Chennai Distribution Hub
+                                </strong>
+
+                                <span>
+                                    24 Sep 2026 · 06:45 AM
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Out for Delivery
+                                </strong>
+
+                                <span>
+                                    Pending
+                                </span>
+
+                            </div>
+
+
+                            <div class="timeline-item">
+
+                                <div class="timeline-dot"></div>
+
+                                <strong>
+                                    Delivered
+                                </strong>
+
+                                <span>
+                                    Pending
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel map-card">
+
+                    <div class="map-pattern"></div>
+
+                    <div class="map-road road-one"></div>
+                    <div class="map-road road-two"></div>
+                    <div class="map-road road-three"></div>
+
+                    <div class="map-route"></div>
+
+                    <div class="map-marker marker-start">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+
+                    <div class="map-marker marker-current">
+                        <i class="fa-solid fa-truck"></i>
+                    </div>
+
+                    <div class="map-marker marker-end">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="map-info">
+
+                        <strong>
+                            <i class="fa-solid fa-route"></i>
+                            Live Delivery Route
+                        </strong>
+
+                        <span>
+                            Bengaluru → Chennai Distribution Hub
+                        </span>
+
+                        <span>
+                            Estimated arrival: Today, 4:30 PM
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================================
+             PAYMENTS
+        ==================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="payments"
+            data-title="Payments & Billing"
+            data-subtitle="Review shipment payments, transactions and billing activity."
+        >
+
+            <div class="section-heading">
+
+                <h2>Payments & Billing</h2>
+
+                <p>
+                    Review courier transactions, payment activity and
+                    financial summaries.
+                </p>
+
+            </div>
+
+
+            <div class="payment-summary">
+
+                <div class="payment-card">
+
+                    <div class="payment-card-icon">
+                        <i class="fa-solid fa-wallet"></i>
+                    </div>
+
+                    <strong>₹24,850</strong>
+
+                    <span>
+                        Total Spent
+                    </span>
+
+                </div>
+
+
+                <div class="payment-card">
+
+                    <div class="payment-card-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+
+                    <strong>₹3,480</strong>
+
+                    <span>
+                        This Month
+                    </span>
+
+                </div>
+
+
+                <div class="payment-card">
+
+                    <div class="payment-card-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <strong>₹699</strong>
+
+                    <span>
+                        Pending Payments
+                    </span>
+
+                </div>
+
+
+                <div class="payment-card">
+
+                    <div class="payment-card-icon">
+                        <i class="fa-solid fa-piggy-bank"></i>
+                    </div>
+
+                    <strong>₹2,140</strong>
+
+                    <span>
+                        Saved Amount
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="payment-layout">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Recent Transactions</h3>
+                            <p>Latest payment activity</p>
+                        </div>
+
+                        <a href="404.html" class="view-link">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="table-responsive">
+
+                        <table class="custom-table">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Transaction</th>
+                                    <th>Shipment</th>
+                                    <th>Date</th>
+                                    <th>Method</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                <tr>
+                                    <td>TXN984521</td>
+                                    <td>SG458921763</td>
+                                    <td>24 Sep 2026</td>
+                                    <td>UPI</td>
+                                    <td>₹349</td>
+                                    <td>
+                                        <span class="table-status delivered">
+                                            Paid
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Receipt
+                                        </a>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>TXN984420</td>
+                                    <td>SG458921521</td>
+                                    <td>23 Sep 2026</td>
+                                    <td>Credit Card</td>
+                                    <td>₹199</td>
+                                    <td>
+                                        <span class="table-status delivered">
+                                            Paid
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Receipt
+                                        </a>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>TXN984318</td>
+                                    <td>SG458920875</td>
+                                    <td>22 Sep 2026</td>
+                                    <td>UPI</td>
+                                    <td>₹499</td>
+                                    <td>
+                                        <span class="table-status delivered">
+                                            Paid
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Receipt
+                                        </a>
+                                    </td>
+                                </tr>
+
+
+                                <tr>
+                                    <td>TXN984201</td>
+                                    <td>SG458920614</td>
+                                    <td>21 Sep 2026</td>
+                                    <td>Debit Card</td>
+                                    <td>₹249</td>
+                                    <td>
+                                        <span class="table-status delivered">
+                                            Paid
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="404.html" class="table-action">
+                                            Receipt
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Payment Methods</h3>
+                            <p>Saved payment options</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="method-card">
+
+                        <div class="method-item">
+
+                            <div class="method-icon">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </div>
+
+                            <div>
+                                <strong>UPI</strong>
+                                <span>user@upi</span>
+                            </div>
+
+                            <a href="404.html" class="method-action">
+                                Manage
+                            </a>
+
+                        </div>
+
+
+                        <div class="method-item">
+
+                            <div class="method-icon">
+                                <i class="fa-brands fa-cc-visa"></i>
+                            </div>
+
+                            <div>
+                                <strong>Visa Card</strong>
+                                <span>•••• 4821</span>
+                            </div>
+
+                            <a href="404.html" class="method-action">
+                                Manage
+                            </a>
+
+                        </div>
+
+
+                        <div class="method-item">
+
+                            <div class="method-icon">
+                                <i class="fa-brands fa-cc-mastercard"></i>
+                            </div>
+
+                            <div>
+                                <strong>Mastercard</strong>
+                                <span>•••• 9217</span>
+                            </div>
+
+                            <a href="404.html" class="method-action">
+                                Manage
+                            </a>
+
+                        </div>
+
+
+                        <a
+                            href="404.html"
+                            class="btn-orange w-100 justify-content-center mt-3"
+                        >
+                            <i class="fa-solid fa-plus"></i>
+                            Add Payment Method
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ====================================================
+             PROFILE
+        ==================================================== -->
+
+        <section
+            class="dashboard-section"
+            id="profile"
+            data-title="Admin Profile"
+            data-subtitle="Manage administrator information and account security."
+        >
+
+            <div class="section-heading">
+
+                <h2>Admin Profile</h2>
+
+                <p>
+                    Manage your administrator profile, account preferences
+                    and security settings.
+                </p>
+
+            </div>
+
+
+            <div class="profile-header-card">
+
+                <div class="profile-main">
+
+                    <div class="profile-big-avatar">
+                        AK
+                    </div>
+
+                    <div>
+
+                        <h2>
+                            Ajith Kumar
+                        </h2>
+
+                        <p>
+                            ajith@example.com
+                        </p>
+
+                        <p>
+                            +91 98765 43210
+                        </p>
+
+                        <div class="verified-pill">
+                            <i class="fa-solid fa-circle-check"></i>
+                            Verified Administrator
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-actions">
+
+                    <a href="404.html" class="outline-btn">
+                        <i class="fa-solid fa-pen"></i>
+                        Edit Profile
+                    </a>
+
+                    <a href="404.html" class="outline-btn">
+                        <i class="fa-solid fa-gear"></i>
+                        Account Settings
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="profile-grid">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Personal Information</h3>
+                            <p>Administrator account details</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-list">
+
+                        <div class="detail-row">
+                            <span>Full Name</span>
+                            <strong>Ajith Kumar</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Email</span>
+                            <strong>ajith@example.com</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Phone</span>
+                            <strong>+91 98765 43210</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Role</span>
+                            <strong>Platform Administrator</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Preferred Language</span>
+                            <strong>English</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Country</span>
+                            <strong>India</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Account Created</span>
+                            <strong>January 2026</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Account Activity</h3>
+                            <p>Administrator platform overview</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-list">
+
+                        <div class="detail-row">
+                            <span>Total Shipments</span>
+                            <strong>1,284</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Successful Deliveries</span>
+                            <strong>1,042</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Total Revenue Managed</span>
+                            <strong>₹4,82,650</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Active Delivery Hubs</span>
+                            <strong>28</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Active Fleet</span>
+                            <strong>48 Vehicles</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Support Requests</span>
+                            <strong>17 Open</strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Account Age</span>
+                            <strong>8 Months</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Platform Permissions</h3>
+                            <p>Current administrator access</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-list">
+
+                        <div class="detail-row">
+                            <span>Shipment Management</span>
+                            <strong class="text-success">
+                                Full Access
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Tracking Operations</span>
+                            <strong class="text-success">
+                                Full Access
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Payment Management</span>
+                            <strong class="text-success">
+                                Full Access
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Customer Records</span>
+                            <strong class="text-success">
+                                Full Access
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Fleet Operations</span>
+                            <strong class="text-success">
+                                Full Access
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>System Settings</span>
+                            <strong class="text-success">
+                                Full Access
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <h3>Profile Security</h3>
+                            <p>Account protection and security</p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-list">
+
+                        <div class="detail-row">
+                            <span>Password</span>
+                            <strong>
+                                Last changed 2 months ago
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Two-Factor Authentication</span>
+                            <strong class="text-success">
+                                Enabled
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Login Alerts</span>
+                            <strong class="text-success">
+                                Enabled
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Active Sessions</span>
+                            <strong>
+                                2 Devices
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Last Login</span>
+                            <strong>
+                                Today, 09:14 AM
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Security Status</span>
+                            <strong class="text-success">
+                                Protected
+                            </strong>
+                        </div>
+
+                        <div class="mt-3 d-flex gap-2">
+
+                            <a
+                                href="404.html"
+                                class="outline-btn"
+                            >
+                                Change Password
+                            </a>
+
+                            <a
+                                href="404.html"
+                                class="outline-btn"
+                            >
+                                Security Settings
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<script>
+    /* =========================================================
+       SECTION NAVIGATION
+    ========================================================= */
+
+    const sections = document.querySelectorAll(".dashboard-section");
+    const navLinks = document.querySelectorAll(".nav-link-custom");
+
+    const topbarTitle = document.getElementById("topbarTitle");
+    const topbarSubtitle = document.getElementById("topbarSubtitle");
+
+    function showSection() {
+
+        let currentHash = window.location.hash.replace("#", "");
+
+        if (!currentHash || !document.getElementById(currentHash)) {
+            currentHash = "dashboard";
+        }
+
+        sections.forEach(section => {
+            section.classList.toggle(
+                "active",
+                section.id === currentHash
+            );
+        });
+
+        navLinks.forEach(link => {
+
+            const href = link.getAttribute("href");
+
+            link.classList.toggle(
+                "active",
+                href === "#" + currentHash
+            );
+
+        });
+
+        const activeSection =
+            document.getElementById(currentHash);
+
+        if (activeSection) {
+
+            topbarTitle.textContent =
+                activeSection.dataset.title || "Admin Dashboard";
+
+            topbarSubtitle.textContent =
+                activeSection.dataset.subtitle ||
+                "Monitor your SwiftGo delivery operations.";
+
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+        closeMobileSidebar();
+    }
+
+    window.addEventListener("hashchange", showSection);
+
+    window.addEventListener("load", showSection);
+
+
+    /* =========================================================
+       DESKTOP SIDEBAR COLLAPSE
+    ========================================================= */
+
+    const desktopToggle =
+        document.getElementById("desktopToggle");
+
+    desktopToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle(
+            "sidebar-collapsed"
+        );
+
+    });
+
+
+    /* =========================================================
+       MOBILE SIDEBAR
+    ========================================================= */
+
+    const mobileToggle =
+        document.getElementById("mobileToggle");
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const sidebarOverlay =
+        document.getElementById("sidebarOverlay");
+
+
+    function openMobileSidebar() {
+
+        sidebar.classList.add("mobile-open");
+        sidebarOverlay.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeMobileSidebar() {
+
+        sidebar.classList.remove("mobile-open");
+        sidebarOverlay.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    mobileToggle.addEventListener(
+        "click",
+        openMobileSidebar
+    );
+
+
+    sidebarOverlay.addEventListener(
+        "click",
+        closeMobileSidebar
+    );
+
+
+    /* =========================================================
+       ESC CLOSE
+    ========================================================= */
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+            closeMobileSidebar();
+        }
+
+    });
+
+
+    /* =========================================================
+       MOBILE NAV CLOSE
+    ========================================================= */
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", () => {
+            closeMobileSidebar();
+        });
+
+    });
+
+
+    /* =========================================================
+       PREVENT INVALID INTERNAL HASH
+    ========================================================= */
+
+    document.querySelectorAll("a[href^='#']").forEach(link => {
+
+        link.addEventListener("click", event => {
+
+            const target =
+                link.getAttribute("href").substring(1);
+
+            if (
+                target &&
+                !document.getElementById(target)
+            ) {
+                event.preventDefault();
+                window.location.href = "404.html";
+            }
+
+        });
+
+    });
+</script>
+
+</body>
+</html>
