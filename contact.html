@@ -1,0 +1,2641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Contact NEXORA Express for shipment support, business logistics, delivery enquiries and customer assistance.">
+
+    <title>Contact | NEXORA Express</title>
+
+
+    <!-- ========================================================
+         GOOGLE FONTS
+         ======================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- ========================================================
+         FONT AWESOME
+         ======================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- ========================================================
+         NEXORA CSS
+         ======================================================== -->
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="css/animations.css">
+
+    <link rel="stylesheet"
+          href="css/contact.css">
+
+</head>
+
+
+<body class="contact-page">
+
+
+    <!-- ========================================================
+         PRELOADER
+         ======================================================== -->
+
+    <div class="preloader"
+         id="preloader">
+
+        <div class="preloader-courier-scene">
+
+            <div class="preloader-brand">
+
+                <span class="preloader-brand-icon">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </span>
+
+                <div>
+                    <strong>NEXORA</strong>
+                    <span>EXPRESS</span>
+                </div>
+
+            </div>
+
+
+            <div class="courier-route">
+
+                <span class="route-line"></span>
+
+
+                <div class="courier-letter">
+
+                    <div class="letter-fold"></div>
+
+                    <span class="letter-line line-one"></span>
+                    <span class="letter-line line-two"></span>
+                    <span class="letter-line line-three"></span>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="box-top"></div>
+
+                    <div class="box-front">
+                        <span class="box-label">N</span>
+                    </div>
+
+                    <div class="box-side"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="preloader-status">
+
+                <span>
+                    PREPARING YOUR DELIVERY
+                </span>
+
+                <strong id="loadingPercent">
+                    0%
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="site-header" id="siteHeader">
+
+    <nav class="navbar">
+
+        <a href="index.html" class="brand-logo">
+
+            <span class="brand-icon">
+                <i class="fa-solid fa-location-arrow"></i>
+            </span>
+
+            <span class="brand-copy">
+                <strong>NEXORA</strong>
+                <small>EXPRESS</small>
+            </span>
+
+        </a>
+
+
+        <div class="desktop-navigation">
+
+            <a href="index.html" class="nav-link ">Home</a>
+
+            <a href="about.html" class="nav-link">
+                About
+            </a>
+
+           
+ <a href="service.html" class="nav-link">
+                services
+            </a>
+
+             
+            
+
+        
+
+            <a href="track.html" class="nav-link">
+                Track 
+            </a>
+
+            <a href="contact.html" class="nav-link active">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="navbar-actions">
+
+            <button
+                class="nav-login"
+                type="button"
+                data-login-open
+            >
+                Sign In
+            </button>
+
+            <a
+                href="404.html"
+                class="primary-btn nav-cta magnetic-btn ripple-btn"
+            >
+                Ship Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+    <!-- ========================================================
+         MOBILE OVERLAY
+         ======================================================== -->
+
+    <div class="mobile-overlay"
+         id="mobileOverlay">
+    </div>
+
+
+
+    <!-- ========================================================
+         MOBILE DRAWER
+         ======================================================== -->
+
+    <aside class="mobile-drawer"
+           id="mobileDrawer"
+           aria-hidden="true">
+
+
+        <div class="drawer-header">
+
+
+            <a href="index.html"
+               class="drawer-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </span>
+
+                <span class="brand-copy">
+
+                    <strong>
+                        NEXORA
+                    </strong>
+
+                    <small>
+                        EXPRESS
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <button type="button"
+                    class="drawer-close"
+                    id="drawerClose"
+                    aria-label="Close Menu">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <nav class="drawer-navigation">
+
+
+            <a href="index.html"
+               class="drawer-link">
+
+                <span>01</span>
+                Home
+
+            </a>
+
+
+            <a href="about.html"
+               class="drawer-link">
+
+                <span>02</span>
+                About
+
+            </a>
+
+
+            <a href="services.html"
+               class="drawer-link">
+
+                <span>03</span>
+                Services
+
+            </a>
+
+
+            <a href="tracking.html"
+               class="drawer-link">
+
+                <span>04</span>
+                Tracking
+
+            </a>
+
+
+            <a href="contact.html"
+               class="drawer-link active">
+
+                <span>05</span>
+                Contact
+
+            </a>
+
+        </nav>
+
+
+
+        <div class="drawer-bottom">
+
+            <button type="button"
+                    class="drawer-login"
+                    data-login-open>
+
+                Sign In
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <main>
+
+
+        <!-- ====================================================
+             SECTION 01 — CONTACT HERO
+             ==================================================== -->
+
+        <section class="contact-hero">
+
+
+            <div class="contact-hero-background">
+
+                <img src="assets/images/contact-hero.jpg"
+                     alt="NEXORA Express customer support">
+
+            </div>
+
+
+            <div class="contact-hero-overlay"></div>
+
+
+            <div class="container contact-hero-layout">
+
+
+                <!-- HERO CONTENT -->
+
+                <div class="contact-hero-content reveal">
+
+
+                    <div class="hero-eyebrow">
+
+                        <span class="eyebrow-line"></span>
+
+                        NEXORA / CONTACT
+
+                    </div>
+
+
+                    <h1>
+
+                        Let’s Move
+
+                        <span>
+                            Something
+                        </span>
+
+                        <em>
+                            Important.
+                        </em>
+
+                    </h1>
+
+
+                    <p>
+
+                        Whether you need a shipment update,
+                        a delivery solution, or support with
+                        your account, our team is ready to help
+                        you move forward with confidence.
+
+                    </p>
+
+
+                    <div class="contact-hero-actions">
+
+
+                        <a href="#contact-form"
+                           class="primary-btn magnetic-btn">
+
+                            Talk to Our Team
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                        <a href="tel:+919000000000"
+                           class="secondary-btn">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            Call Support
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="contact-trust-row">
+
+
+                        <span>
+
+                            <i class="fa-solid fa-clock"></i>
+
+                            24/7 SUPPORT
+
+                        </span>
+
+
+                        <span>
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            INDIA & GLOBAL
+
+                        </span>
+
+
+                        <span>
+
+                            <i class="fa-solid fa-bolt"></i>
+
+                            FAST RESPONSE
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- HERO VISUAL -->
+
+                <div class="contact-hero-visual reveal-right">
+
+
+                    <div class="contact-hero-card">
+
+
+                        <div class="contact-card-top">
+
+
+                            <div>
+
+                                <span>
+                                    CONTACT CENTRE
+                                </span>
+
+                                <strong>
+                                    How can we help?
+                                </strong>
+
+                            </div>
+
+
+                            <div class="contact-online">
+
+                                <span></span>
+
+                                ONLINE
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="contact-card-image">
+
+
+                            <img src="assets/images/contact-support.jpg"
+                                 alt="NEXORA Express support team">
+
+
+                            <div class="contact-image-overlay">
+                            </div>
+
+
+                            <div class="contact-floating-status">
+
+
+                                <i class="fa-solid fa-headset"></i>
+
+
+                                <div>
+
+                                    <span>
+                                        SUPPORT STATUS
+                                    </span>
+
+                                    <strong>
+                                        Our team is available
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="contact-card-bottom">
+
+
+                            <div>
+
+                                <span>
+                                    RESPONSE TIME
+                                </span>
+
+                                <strong>
+                                    &lt; 10 MIN
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>
+                                    SUPPORT CHANNELS
+                                </span>
+
+                                <strong>
+                                    04 ACTIVE
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="contact-hero-bottom">
+
+                <span>
+                    CUSTOMER CARE / BUSINESS ENQUIRIES / SHIPMENT SUPPORT
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 02 — CONTACT OPTIONS
+             ==================================================== -->
+
+        <section class="contact-options-section section-light">
+
+            <div class="container">
+
+
+                <div class="section-heading centered reveal">
+
+
+                    <div class="section-kicker">
+                        GET IN TOUCH
+                    </div>
+
+
+                    <h2>
+
+                        One team.
+
+                        <span>
+                            Every conversation.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Choose the right channel for what you need.
+                        From shipment questions to business partnerships,
+                        we make reaching us simple.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="contact-options-grid">
+
+
+                    <article class="contact-option-card reveal">
+
+
+                        <div class="contact-option-icon">
+
+                            <i class="fa-solid fa-box"></i>
+
+                        </div>
+
+
+                        <span class="contact-option-label">
+                            SHIPMENT SUPPORT
+                        </span>
+
+
+                        <h3>
+                            Need help with a delivery?
+                        </h3>
+
+
+                        <p>
+
+                            Get assistance with tracking,
+                            delivery status, address changes,
+                            delays and shipment questions.
+
+                        </p>
+
+
+                        <a href="#contact-form"
+                           class="text-link">
+
+                            Contact support
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="contact-option-card featured reveal">
+
+
+                        <div class="contact-option-icon">
+
+                            <i class="fa-solid fa-building"></i>
+
+                        </div>
+
+
+                        <span class="contact-option-label">
+                            BUSINESS SOLUTIONS
+                        </span>
+
+
+                        <h3>
+                            Shipping for your business?
+                        </h3>
+
+
+                        <p>
+
+                            Talk with our logistics team about
+                            recurring shipments, enterprise delivery
+                            and custom solutions.
+
+                        </p>
+
+
+                        <a href="#contact-form"
+                           class="text-link">
+
+                            Start a conversation
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="contact-option-card reveal">
+
+
+                        <div class="contact-option-icon">
+
+                            <i class="fa-solid fa-handshake"></i>
+
+                        </div>
+
+
+                        <span class="contact-option-label">
+                            PARTNERSHIPS
+                        </span>
+
+
+                        <h3>
+                            Let’s build something together.
+                        </h3>
+
+
+                        <p>
+
+                            Explore opportunities to work with
+                            NEXORA across technology, logistics
+                            and delivery services.
+
+                        </p>
+
+
+                        <a href="#contact-form"
+                           class="text-link">
+
+                            Discuss partnership
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 03 — CONTACT FORM
+             ==================================================== -->
+
+        <section class="contact-form-section section-dark"
+                 id="contact-form">
+
+
+            <div class="container">
+
+
+                <div class="contact-form-layout">
+
+
+                    <!-- FORM INTRO -->
+
+                    <div class="contact-form-copy reveal">
+
+
+                        <div class="section-kicker">
+                            SEND A MESSAGE
+                        </div>
+
+
+                        <h2>
+
+                            Tell us what
+
+                            <em>
+                                you need.
+                            </em>
+
+                        </h2>
+
+
+                        <p>
+
+                            Share a few details and our team will
+                            connect you with the right person.
+                            No complicated process. Just a clear
+                            conversation.
+
+                        </p>
+
+
+
+                        <div class="contact-direct-details">
+
+
+                            <div class="direct-detail">
+
+
+                                <i class="fa-solid fa-envelope"></i>
+
+
+                                <div>
+
+                                    <span>
+                                        EMAIL
+                                    </span>
+
+                                    <strong>
+                                        hello@nexoraexpress.com
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="direct-detail">
+
+
+                                <i class="fa-solid fa-phone"></i>
+
+
+                                <div>
+
+                                    <span>
+                                        PHONE
+                                    </span>
+
+                                    <strong>
+                                        +91 90000 00000
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="direct-detail">
+
+
+                                <i class="fa-solid fa-location-dot"></i>
+
+
+                                <div>
+
+                                    <span>
+                                        HEAD OFFICE
+                                    </span>
+
+                                    <strong>
+                                        Chennai, Tamil Nadu, India
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- FORM -->
+
+                    <div class="contact-form-card reveal-right">
+
+
+                        <form id="contactForm"
+                              novalidate>
+
+
+                            <div class="form-row">
+
+
+                                <div class="contact-field">
+
+                                    <label for="contactName">
+                                        FULL NAME
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="contactName"
+                                        name="name"
+                                        placeholder="Your full name"
+                                        autocomplete="name"
+                                    >
+
+                                </div>
+
+
+
+                                <div class="contact-field">
+
+                                    <label for="contactEmail">
+                                        EMAIL ADDRESS
+                                    </label>
+
+                                    <input
+                                        type="email"
+                                        id="contactEmail"
+                                        name="email"
+                                        placeholder="you@example.com"
+                                        autocomplete="email"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-row">
+
+
+                                <div class="contact-field">
+
+                                    <label for="contactPhone">
+                                        PHONE NUMBER
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="contactPhone"
+                                        name="phone"
+                                        placeholder="+91 00000 00000"
+                                        autocomplete="tel"
+                                    >
+
+                                </div>
+
+
+
+                                <div class="contact-field">
+
+                                    <label for="contactSubject">
+                                        SUBJECT
+                                    </label>
+
+                                    <select
+                                        id="contactSubject"
+                                        name="subject">
+
+                                        <option value="">
+                                            Select a topic
+                                        </option>
+
+                                        <option value="shipment">
+                                            Shipment Support
+                                        </option>
+
+                                        <option value="business">
+                                            Business Enquiry
+                                        </option>
+
+                                        <option value="partnership">
+                                            Partnership
+                                        </option>
+
+                                        <option value="general">
+                                            General Enquiry
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="contact-field">
+
+                                <label for="contactMessage">
+                                    MESSAGE
+                                </label>
+
+                                <textarea
+                                    id="contactMessage"
+                                    name="message"
+                                    rows="6"
+                                    placeholder="Tell us how we can help..."
+                                ></textarea>
+
+                            </div>
+
+
+
+                            <div class="contact-form-footer">
+
+
+                                <p>
+
+                                    <i class="fa-solid fa-lock"></i>
+
+                                    Your information is handled securely.
+
+                                </p>
+
+
+                                <button
+                                    type="submit"
+                                    class="primary-btn magnetic-btn">
+
+                                    Send Message
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div id="contactFormMessage"></div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 04 — LOCATIONS
+             ==================================================== -->
+
+        <section class="contact-location-section section-cream">
+
+
+            <div class="container">
+
+
+                <div class="section-heading split-heading reveal">
+
+
+                    <div>
+
+                        <div class="section-kicker">
+                            FIND NEXORA
+                        </div>
+
+
+                        <h2>
+
+                            Close to where
+
+                            <span>
+                                business happens.
+                            </span>
+
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Our network connects customers,
+                        businesses and delivery operations
+                        across major locations, with support
+                        designed to stay close to every shipment.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="contact-location-grid">
+
+
+                    <div class="location-main reveal">
+
+
+                        <img
+                            src="assets/images/logistics-network.jpg"
+                            alt="NEXORA Express logistics network"
+                        >
+
+
+                        <div class="location-overlay">
+
+                            <span>
+                                HEAD OFFICE
+                            </span>
+
+                            <h3>
+                                Chennai
+                            </h3>
+
+                            <p>
+                                Tamil Nadu, India
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="location-list reveal-right">
+
+
+                        <div class="location-item active">
+
+
+                            <div class="location-number">
+                                01
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Chennai
+                                </strong>
+
+                                <span>
+                                    Tamil Nadu, India
+                                </span>
+
+                            </div>
+
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+
+
+
+                        <div class="location-item">
+
+
+                            <div class="location-number">
+                                02
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Bengaluru
+                                </strong>
+
+                                <span>
+                                    Karnataka, India
+                                </span>
+
+                            </div>
+
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+
+
+
+                        <div class="location-item">
+
+
+                            <div class="location-number">
+                                03
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Mumbai
+                                </strong>
+
+                                <span>
+                                    Maharashtra, India
+                                </span>
+
+                            </div>
+
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+
+
+
+                        <div class="location-item">
+
+
+                            <div class="location-number">
+                                04
+                            </div>
+
+
+                            <div>
+
+                                <strong>
+                                    Hyderabad
+                                </strong>
+
+                                <span>
+                                    Telangana, India
+                                </span>
+
+                            </div>
+
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 05 — SUPPORT EXPERIENCE
+             ==================================================== -->
+
+        <section class="contact-support-section section-blue">
+
+
+            <div class="container">
+
+
+                <div class="contact-support-layout">
+
+
+                    <div class="contact-support-visual reveal">
+
+
+                        <div class="support-image-frame">
+
+
+                            <img
+                                src="assets/images/contact-team.jpg"
+                                alt="NEXORA Express customer support team"
+                            >
+
+
+                            <div class="support-image-tag">
+                                PEOPLE BEHIND THE DELIVERY
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="contact-support-copy reveal-right">
+
+
+                        <div class="section-kicker">
+                            HUMAN SUPPORT
+                        </div>
+
+
+                        <h2>
+
+                            Technology keeps us
+                            connected.
+
+                            <em>
+                                People
+                            </em>
+
+                            keep us helpful.
+
+                        </h2>
+
+
+                        <p>
+
+                            Every shipment has a journey,
+                            and every journey can come with
+                            questions. Our support teams are
+                            here to provide clear answers
+                            when you need them.
+
+                        </p>
+
+
+
+                        <div class="support-points">
+
+
+                            <div>
+
+                                <span>
+                                    01
+                                </span>
+
+
+                                <div>
+
+                                    <strong>
+                                        Clear communication
+                                    </strong>
+
+                                    <p>
+                                        Straightforward updates
+                                        without unnecessary complexity.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div>
+
+                                <span>
+                                    02
+                                </span>
+
+
+                                <div>
+
+                                    <strong>
+                                        Real shipment context
+                                    </strong>
+
+                                    <p>
+                                        Support built around the
+                                        actual status of your delivery.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div>
+
+                                <span>
+                                    03
+                                </span>
+
+
+                                <div>
+
+                                    <strong>
+                                        Fast escalation
+                                    </strong>
+
+                                    <p>
+                                        When something needs attention,
+                                        we move it forward quickly.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 06 — FAQ
+             ==================================================== -->
+
+        <section class="contact-faq-section section-white">
+
+
+            <div class="container">
+
+
+                <div class="section-heading centered reveal">
+
+
+                    <div class="section-kicker">
+                        QUICK ANSWERS
+                    </div>
+
+
+                    <h2>
+
+                        Before you
+
+                        <span>
+                            reach out.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        A few answers to the questions
+                        customers ask most often.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="contact-faq-list">
+
+
+                    <details class="contact-faq-item reveal">
+
+                        <summary>
+
+                            How can I track my shipment?
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </summary>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+
+                                Enter your shipment or tracking
+                                number on our Tracking page to
+                                view the latest available
+                                delivery status.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item reveal">
+
+                        <summary>
+
+                            What should I do if my shipment is delayed?
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </summary>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+
+                                Check the latest tracking update
+                                first. If you need additional
+                                assistance, contact our support
+                                team with your shipment number.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item reveal">
+
+                        <summary>
+
+                            Can NEXORA support business shipments?
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </summary>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+
+                                Yes. Businesses can contact our
+                                logistics team to discuss recurring
+                                shipments, delivery requirements
+                                and tailored logistics solutions.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+
+
+                    <details class="contact-faq-item reveal">
+
+                        <summary>
+
+                            How quickly will someone respond?
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </summary>
+
+
+                        <div class="faq-answer">
+
+                            <p>
+
+                                Our team aims to respond as quickly
+                                as possible during support hours,
+                                with urgent shipment concerns
+                                handled through the appropriate channel.
+
+                            </p>
+
+                        </div>
+
+                    </details>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 07 — CONTACT CHANNELS
+             ==================================================== -->
+
+        <section class="contact-channels-section section-dark">
+
+
+            <div class="container">
+
+
+                <div class="contact-channels-header reveal">
+
+
+                    <div>
+
+                        <div class="section-kicker">
+                            CONTACT CHANNELS
+                        </div>
+
+
+                        <h2>
+
+                            Reach us
+
+                            <em>
+                                your way.
+                            </em>
+
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Pick the channel that works best for you.
+                        Our team is ready to help with the next step.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="contact-channels-grid">
+
+
+                    <a
+                        href="mailto:hello@nexoraexpress.com"
+                        class="contact-channel-card reveal"
+                    >
+
+                        <span class="channel-number">
+                            01
+                        </span>
+
+
+                        <i class="fa-solid fa-envelope"></i>
+
+
+                        <span class="channel-label">
+                            EMAIL
+                        </span>
+
+
+                        <strong>
+                            hello@nexoraexpress.com
+                        </strong>
+
+
+                        <span class="channel-action">
+
+                            Send an email
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        href="tel:+919000000000"
+                        class="contact-channel-card reveal"
+                    >
+
+                        <span class="channel-number">
+                            02
+                        </span>
+
+
+                        <i class="fa-solid fa-phone"></i>
+
+
+                        <span class="channel-label">
+                            PHONE
+                        </span>
+
+
+                        <strong>
+                            +91 90000 00000
+                        </strong>
+
+
+                        <span class="channel-action">
+
+                            Call our team
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </span>
+
+                    </a>
+
+
+
+                    <div class="contact-channel-card reveal">
+
+
+                        <span class="channel-number">
+                            03
+                        </span>
+
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+
+                        <span class="channel-label">
+                            OFFICE
+                        </span>
+
+
+                        <strong>
+                            Chennai, Tamil Nadu
+                        </strong>
+
+
+                        <span class="channel-action">
+
+                            Visit our office
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ====================================================
+             SECTION 08 — FINAL CTA
+             ==================================================== -->
+
+        <section class="contact-final-cta">
+
+
+            <div class="cta-background">
+
+
+                <img
+                    src="assets/images/courier-road.jpg"
+                    alt="NEXORA Express delivery route"
+                >
+
+            </div>
+
+
+            <div class="container">
+
+
+                <div class="cta-content reveal">
+
+
+                    <div class="section-kicker">
+                        NEXORA EXPRESS
+                    </div>
+
+
+                    <h2>
+
+                        Your shipment has a journey.
+
+                        <span>
+                            Let’s make it a smooth one.
+                        </span>
+
+                    </h2>
+
+
+                    <p>
+
+                        From the first pickup to the final delivery,
+                        NEXORA is here to keep every move connected.
+
+                    </p>
+
+
+                    <div class="cta-actions">
+
+
+                        <a
+                            href="#contact-form"
+                            class="primary-btn magnetic-btn"
+                        >
+
+                            Start a Conversation
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                        <a
+                            href="tracking.html"
+                            class="outline-light-btn"
+                        >
+
+                            Track a Shipment
+
+                            <i class="fa-solid fa-location-crosshairs"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================================
+         FOOTER
+         ======================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-main container">
+
+
+            <div class="footer-brand">
+
+
+                <a href="index.html"
+                   class="footer-logo">
+
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </span>
+
+                    <span class="brand-copy">
+
+                        <strong>
+                            NEXORA
+                        </strong>
+
+                        <small>
+                            EXPRESS
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <p>
+
+                    Moving people, parcels and businesses
+                    forward with reliable delivery solutions.
+
+                </p>
+
+
+                <div class="footer-socials">
+
+
+                    <a href="#"
+                       aria-label="LinkedIn">
+
+                        <i class="fa-brands fa-linkedin-in"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       aria-label="Instagram">
+
+                        <i class="fa-brands fa-instagram"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       aria-label="Facebook">
+
+                        <i class="fa-brands fa-facebook-f"></i>
+
+                    </a>
+
+
+                    <a href="#"
+                       aria-label="X">
+
+                        <i class="fa-brands fa-x-twitter"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+
+                <h4>
+                    COMPANY
+                </h4>
+
+
+                <ul>
+
+                    <li>
+                        <a href="about.html">
+                            About
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            Services
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="tracking.html">
+                            Tracking
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+
+                <h4>
+                    SERVICES
+                </h4>
+
+
+                <ul>
+
+                    <li>
+                        <a href="services.html">
+                            Express Delivery
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            International
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            Business Logistics
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="services.html">
+                            Same-Day Delivery
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="footer-newsletter">
+
+
+                <h4>
+                    STAY CONNECTED
+                </h4>
+
+
+                <p>
+                    Get updates, delivery insights and
+                    NEXORA news in your inbox.
+                </p>
+
+
+                <form id="newsletterForm">
+
+
+                    <div class="newsletter-input">
+
+
+                        <input
+                            type="email"
+                            id="newsletterEmail"
+                            placeholder="Your email address"
+                            autocomplete="email"
+                        >
+
+
+                        <button type="submit"
+                                aria-label="Subscribe">
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <div id="newsletterMessage"></div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-bottom container">
+
+
+            <p>
+                © 2026 NEXORA Express. All rights reserved.
+            </p>
+
+
+            <div>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+                <a href="#">
+                    Terms
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- ========================================================
+         LOGIN MODAL
+         ======================================================== -->
+
+    <div class="modal-overlay"
+         id="loginModal"
+         aria-hidden="true">
+
+
+        <div class="login-modal">
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="loginModalClose"
+                aria-label="Close Login"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+
+            <div class="login-visual">
+
+
+                <img
+                    src="assets/images/login-courier.jpg"
+                    alt="NEXORA Express delivery"
+                >
+
+
+                <div class="login-visual-overlay"></div>
+
+
+                <div class="login-visual-content">
+
+
+                    <div class="secure-badge">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        SECURE ACCESS
+
+                    </div>
+
+
+                    <h3>
+                        Everything you ship,
+                        connected.
+                    </h3>
+
+
+                    <p>
+                        Access your deliveries, account
+                        details and shipment activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="login-content">
+
+
+                <div class="login-heading">
+
+
+                    <span>
+                        NEXORA EXPRESS
+                    </span>
+
+
+                    <h2 id="loginTitle">
+                        Welcome back.
+                    </h2>
+
+
+                    <p>
+                        Sign in to continue.
+                    </p>
+
+                </div>
+
+
+
+                <div class="login-tabs">
+
+
+                    <button
+                        type="button"
+                        class="login-tab active"
+                        data-login-tab="user"
+                    >
+
+                        User
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="login-tab"
+                        data-login-tab="admin"
+                    >
+
+                        Admin
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- USER LOGIN -->
+
+                <form
+                    class="login-form active"
+                    id="userLoginForm"
+                    data-login-form="user"
+                >
+
+
+                    <div class="input-wrap">
+
+
+                        <label for="userEmail">
+                            EMAIL ADDRESS
+                        </label>
+
+
+                        <input
+                            type="email"
+                            id="userEmail"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+
+
+                    <div class="input-wrap">
+
+
+                        <label for="userPassword">
+                            PASSWORD
+                        </label>
+
+
+                        <input
+                            type="password"
+                            id="userPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-password-toggle="userPassword"
+                            aria-label="Show password"
+                        >
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="login-options">
+
+
+                        <label class="remember-option">
+
+                            <input type="checkbox">
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="login-submit"
+                        id="loginSubmitBtn"
+                    >
+
+                        Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <div class="login-create">
+
+                        Don't have an account?
+
+                        <a href="#">
+                            Create account
+                        </a>
+
+                    </div>
+
+                </form>
+
+
+
+                <!-- ADMIN LOGIN -->
+
+                <form
+                    class="login-form"
+                    id="adminLoginForm"
+                    data-login-form="admin"
+                >
+
+
+                    <div class="input-wrap">
+
+
+                        <label for="adminEmail">
+                            ADMIN EMAIL
+                        </label>
+
+
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            placeholder="admin@example.com"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+
+
+                    <div class="input-wrap">
+
+
+                        <label for="adminPassword">
+                            PASSWORD
+                        </label>
+
+
+                        <input
+                            type="password"
+                            id="adminPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-password-toggle="adminPassword"
+                            aria-label="Show password"
+                        >
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+
+
+                    <div class="login-options">
+
+
+                        <label class="remember-option">
+
+                            <input type="checkbox">
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+
+                    <button
+                        type="submit"
+                        class="login-submit admin-submit"
+                        id="adminSubmitBtn"
+                    >
+
+                        Admin Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+
+
+                <div class="login-security">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Protected with secure authentication
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ========================================================
+         BACK TO TOP
+         ======================================================== -->
+
+    <button
+        type="button"
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top"
+    >
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+
+
+    <!-- ========================================================
+         JAVASCRIPT
+         ======================================================== -->
+
+    <script src="js/main.js"></script>
+
+
+
+    <!-- ========================================================
+         CONTACT PAGE JS
+         ======================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const contactForm =
+                document.getElementById("contactForm");
+
+            const contactName =
+                document.getElementById("contactName");
+
+            const contactPhone =
+                document.getElementById("contactPhone");
+
+            const contactMessage =
+                document.getElementById("contactFormMessage");
+
+
+            /* ------------------------------------------------
+               NAME — LETTERS ONLY
+               ------------------------------------------------ */
+
+            if (contactName) {
+
+                contactName.addEventListener("input", function () {
+
+                    this.value = this.value.replace(
+                        /[^a-zA-Z\s]/g,
+                        ""
+                    );
+
+                });
+
+            }
+
+
+            /* ------------------------------------------------
+               PHONE — NUMBERS ONLY
+               ------------------------------------------------ */
+
+            if (contactPhone) {
+
+                contactPhone.addEventListener("input", function () {
+
+                    this.value = this.value.replace(
+                        /[^0-9+\s-]/g,
+                        ""
+                    );
+
+                });
+
+            }
+
+
+            /* ------------------------------------------------
+               CONTACT FORM
+               ------------------------------------------------ */
+
+            if (contactForm) {
+
+                contactForm.addEventListener(
+                    "submit",
+                    function (event) {
+
+                        event.preventDefault();
+
+
+                        const name =
+                            document.getElementById(
+                                "contactName"
+                            ).value.trim();
+
+
+                        const email =
+                            document.getElementById(
+                                "contactEmail"
+                            ).value.trim();
+
+
+                        const phone =
+                            document.getElementById(
+                                "contactPhone"
+                            ).value.trim();
+
+
+                        const subject =
+                            document.getElementById(
+                                "contactSubject"
+                            ).value;
+
+
+                        const message =
+                            document.getElementById(
+                                "contactMessage"
+                            ).value.trim();
+
+
+                        if (!name) {
+
+                            contactMessage.className =
+                                "error";
+
+                            contactMessage.textContent =
+                                "Please enter your full name.";
+
+                            return;
+
+                        }
+
+
+                        if (!email) {
+
+                            contactMessage.className =
+                                "error";
+
+                            contactMessage.textContent =
+                                "Please enter your email address.";
+
+                            return;
+
+                        }
+
+
+                        if (!phone) {
+
+                            contactMessage.className =
+                                "error";
+
+                            contactMessage.textContent =
+                                "Please enter your phone number.";
+
+                            return;
+
+                        }
+
+
+                        if (!subject) {
+
+                            contactMessage.className =
+                                "error";
+
+                            contactMessage.textContent =
+                                "Please select a subject.";
+
+                            return;
+
+                        }
+
+
+                        if (!message) {
+
+                            contactMessage.className =
+                                "error";
+
+                            contactMessage.textContent =
+                                "Please enter your message.";
+
+                            return;
+
+                        }
+
+
+                        contactMessage.className =
+                            "success";
+
+                        contactMessage.textContent =
+                            "Thank you. Your message has been received. Our team will contact you shortly.";
+
+
+                        contactForm.reset();
+
+                    }
+                );
+
+            }
+
+
+            /* ------------------------------------------------
+               FAQ ICON
+               ------------------------------------------------ */
+
+            const faqItems =
+                document.querySelectorAll(
+                    ".contact-faq-item"
+                );
+
+
+            faqItems.forEach(function (item) {
+
+                item.addEventListener(
+                    "toggle",
+                    function () {
+
+                        const icon =
+                            item.querySelector(
+                                "summary i"
+                            );
+
+
+                        if (!icon) return;
+
+
+                        if (item.open) {
+
+                            icon.classList.remove(
+                                "fa-plus"
+                            );
+
+                            icon.classList.add(
+                                "fa-minus"
+                            );
+
+                        } else {
+
+                            icon.classList.remove(
+                                "fa-minus"
+                            );
+
+                            icon.classList.add(
+                                "fa-plus"
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

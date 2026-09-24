@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Services | NEXORA EXPRESS</title>
+
+    <meta name="description"
+        content="Explore NEXORA EXPRESS courier, express delivery, international shipping, business logistics and specialized delivery services.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Services CSS -->
+    <link rel="stylesheet" href="css/services.css">
+</head>
+
+
+<body class="services-page">
+
+
+    <!-- =========================================================
+         PRELOADER
+         ========================================================= -->
+
+    <div class="preloader" id="preloader">
+
+        <div class="preloader-courier-scene">
+
+            <div class="preloader-brand">
+
+                <span class="preloader-brand-icon">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </span>
+
+                <div>
+                    <strong>NEXORA</strong>
+                    <span>EXPRESS</span>
+                </div>
+
+            </div>
+
+
+            <div class="courier-route">
+
+                <span class="route-line"></span>
+
+
+                <div class="courier-letter">
+
+                    <div class="letter-fold"></div>
+
+                    <span class="letter-line line-one"></span>
+                    <span class="letter-line line-two"></span>
+                    <span class="letter-line line-three"></span>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="box-top"></div>
+
+                    <div class="box-front">
+                        <span class="box-label">N</span>
+                    </div>
+
+                    <div class="box-side"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="preloader-status">
+
+                <span>PREPARING YOUR DELIVERY</span>
+
+                <strong id="loadingPercent">0%</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="site-header" id="siteHeader">
+
+    <nav class="navbar">
+
+        <a href="index.html" class="brand-logo">
+
+            <span class="brand-icon">
+                <i class="fa-solid fa-location-arrow"></i>
+            </span>
+
+            <span class="brand-copy">
+                <strong>NEXORA</strong>
+                <small>EXPRESS</small>
+            </span>
+
+        </a>
+
+
+        <div class="desktop-navigation">
+
+            <a href="index.html" class="nav-link ">Home</a>
+
+            <a href="about.html" class="nav-link">
+                About
+            </a>
+
+           
+ <a href="service.html" class="nav-link active">
+                services
+            </a>
+
+             
+            
+
+        
+
+            <a href="track.html" class="nav-link">
+                Track 
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="navbar-actions">
+
+            <button
+                class="nav-login"
+                type="button"
+                data-login-open
+            >
+                Sign In
+            </button>
+
+            <a
+                href="404.html"
+                class="primary-btn nav-cta magnetic-btn ripple-btn"
+            >
+                Ship Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+
+</header>
+
+
+
+
+
+    <!-- =========================================================
+         MOBILE NAV
+         ========================================================= -->
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+    <aside class="mobile-drawer" id="mobileDrawer">
+
+
+        <div class="drawer-header">
+
+            <a href="index.html" class="drawer-logo">
+
+                <span class="brand-icon">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </span>
+
+                <span class="brand-copy">
+                    <strong>NEXORA</strong>
+                    <small>EXPRESS</small>
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="drawer-close"
+                id="drawerClose"
+                aria-label="Close navigation">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="drawer-navigation">
+
+            <a href="index.html" class="drawer-link">
+                <span>01</span>
+                Home
+            </a>
+
+            <a href="about.html" class="drawer-link">
+                <span>02</span>
+                About
+            </a>
+
+            <a href="services.html" class="drawer-link active">
+                <span>03</span>
+                Services
+            </a>
+
+            <a href="tracking.html" class="drawer-link">
+                <span>04</span>
+                Tracking
+            </a>
+
+            <a href="contact.html" class="drawer-link">
+                <span>05</span>
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="drawer-bottom">
+
+            <button
+                type="button"
+                class="drawer-login"
+                data-login-open>
+
+                <i class="fa-regular fa-user"></i>
+
+                Sign In
+
+            </button>
+
+
+            <a href="tracking.html"
+               class="primary-btn">
+
+                Track Shipment
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main>
+
+
+        <!-- =====================================================
+             SECTION 01 — SERVICES HERO
+             ===================================================== -->
+
+        <section class="services-hero">
+
+            <div class="services-hero-bg">
+
+                <img
+                    src="assets/images/business-shipping.jpg"
+                    alt="NEXORA logistics services">
+
+                <div class="services-hero-overlay"></div>
+
+            </div>
+
+
+            <div class="container">
+
+                <div class="services-hero-layout">
+
+
+                    <div class="services-hero-content reveal">
+
+                        <div class="hero-eyebrow">
+
+                            <span class="eyebrow-line"></span>
+
+                            NEXORA SERVICES
+
+                        </div>
+
+
+                        <h1>
+
+                            Delivery
+                            <span>Built Around</span>
+                            <em>Your Needs.</em>
+
+                        </h1>
+
+
+                        <p>
+
+                            From urgent documents to global freight,
+                            NEXORA EXPRESS delivers flexible courier
+                            and logistics solutions designed around
+                            speed, precision and complete visibility.
+
+                        </p>
+
+
+                        <div class="hero-actions">
+
+                            <a href="#service-explorer"
+                               class="primary-btn magnetic-btn ripple-btn">
+
+                                Explore Services
+
+                                <i class="fa-solid fa-arrow-down"></i>
+
+                            </a>
+
+
+                            <a href="tracking.html"
+                               class="secondary-btn">
+
+                                Track a Shipment
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HERO SERVICE CARD -->
+
+                    <div class="services-hero-card reveal-right">
+
+                        <div class="hero-card-top">
+
+                            <span>
+                                SERVICE COVERAGE
+                            </span>
+
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </div>
+
+
+                        <div class="hero-card-number">
+                            180+
+                        </div>
+
+
+                        <p>
+                            Cities connected through our
+                            growing delivery network.
+                        </p>
+
+
+                        <div class="hero-card-line"></div>
+
+
+                        <div class="hero-card-meta">
+
+                            <span>
+                                <i class="fa-solid fa-circle"></i>
+                                LIVE NETWORK
+                            </span>
+
+                            <strong>
+                                24 / 7
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="services-hero-bottom">
+
+                    <span>01 / SERVICES</span>
+
+                    <span>EXPRESS • GLOBAL • BUSINESS</span>
+
+                    <span>BUILT FOR EVERY SHIPMENT</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION 02 — SERVICE EXPLORER
+             ===================================================== -->
+
+        <section class="service-explorer section-light"
+                 id="service-explorer">
+
+            <div class="container">
+
+
+                <div class="section-heading split-heading reveal">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            WHAT WE DO
+                        </span>
+
+                        <h2>
+
+                            One Network.
+                            <span>Multiple Ways</span>
+                            to Move.
+
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        Every shipment has a different destination,
+                        deadline and requirement. Our services are
+                        designed to give you the right delivery
+                        solution without unnecessary complexity.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CAROUSEL -->
+
+                <div class="service-explorer-wrap">
+
+
+                    <button
+                        type="button"
+                        class="service-explorer-arrow prev"
+                        id="serviceExplorerPrev"
+                        aria-label="Previous service">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                    </button>
+
+
+                    <div class="service-explorer-carousel"
+                         id="serviceExplorerCarousel">
+
+
+                        <!-- SLIDE 01 -->
+
+                        <article
+                            class="service-feature-slide active"
+                            data-service="01">
+
+                            <div class="service-feature-image">
+
+                                <img
+                                    src="assets/images/express-delivery.jpg"
+                                    alt="Express courier delivery">
+
+                                <span class="service-feature-number">
+                                    01
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-feature-content">
+
+                                <span class="feature-kicker">
+                                    FASTEST ROUTE
+                                </span>
+
+
+                                <h3>
+                                    Express Delivery
+                                </h3>
+
+
+                                <p>
+
+                                    When every hour matters,
+                                    our express network moves
+                                    important documents and
+                                    parcels with priority handling
+                                    from pickup to destination.
+
+                                </p>
+
+
+                                <ul class="service-check-list">
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Same-day & next-day options
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Real-time shipment tracking
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Priority handling
+                                    </li>
+
+                                </ul>
+
+
+                                <a href="tracking.html"
+                                   class="service-feature-link">
+
+                                    Start an Express Shipment
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- SLIDE 02 -->
+
+                        <article
+                            class="service-feature-slide"
+                            data-service="02">
+
+                            <div class="service-feature-image">
+
+                                <img
+                                    src="assets/images/international-courier.jpg"
+                                    alt="International courier shipping">
+
+                                <span class="service-feature-number">
+                                    02
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-feature-content">
+
+                                <span class="feature-kicker">
+                                    BEYOND BORDERS
+                                </span>
+
+
+                                <h3>
+                                    International Shipping
+                                </h3>
+
+
+                                <p>
+
+                                    Connect with customers,
+                                    partners and destinations
+                                    across borders through a
+                                    streamlined international
+                                    courier network.
+
+                                </p>
+
+
+                                <ul class="service-check-list">
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        International document delivery
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Door-to-door service
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Shipment visibility
+                                    </li>
+
+                                </ul>
+
+
+                                <a href="tracking.html"
+                                   class="service-feature-link">
+
+                                    Plan an International Shipment
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- SLIDE 03 -->
+
+                        <article
+                            class="service-feature-slide"
+                            data-service="03">
+
+                            <div class="service-feature-image">
+
+                                <img
+                                    src="assets/images/business-logistics.jpg"
+                                    alt="Business logistics solutions">
+
+                                <span class="service-feature-number">
+                                    03
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-feature-content">
+
+                                <span class="feature-kicker">
+                                    FOR BUSINESS
+                                </span>
+
+
+                                <h3>
+                                    Business Logistics
+                                </h3>
+
+
+                                <p>
+
+                                    Reliable logistics support for
+                                    growing teams, online businesses
+                                    and enterprises that need their
+                                    deliveries to move as efficiently
+                                    as their operations.
+
+                                </p>
+
+
+                                <ul class="service-check-list">
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Scheduled business pickups
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Bulk shipment support
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Dedicated account assistance
+                                    </li>
+
+                                </ul>
+
+
+                                <a href="contact.html"
+                                   class="service-feature-link">
+
+                                    Talk to Our Logistics Team
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+
+                        <!-- SLIDE 04 -->
+
+                        <article
+                            class="service-feature-slide"
+                            data-service="04">
+
+                            <div class="service-feature-image">
+
+                                <img
+                                    src="assets/images/same-day-delivery.jpg"
+                                    alt="Same day courier delivery">
+
+                                <span class="service-feature-number">
+                                    04
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-feature-content">
+
+                                <span class="feature-kicker">
+                                    ON YOUR CLOCK
+                                </span>
+
+
+                                <h3>
+                                    Same-Day Delivery
+                                </h3>
+
+
+                                <p>
+
+                                    For urgent local shipments,
+                                    our same-day service helps
+                                    move critical parcels quickly
+                                    while keeping you informed
+                                    throughout the journey.
+
+                                </p>
+
+
+                                <ul class="service-check-list">
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Rapid local pickup
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Priority routing
+                                    </li>
+
+                                    <li>
+                                        <i class="fa-solid fa-check"></i>
+                                        Delivery confirmation
+                                    </li>
+
+                                </ul>
+
+
+                                <a href="tracking.html"
+                                   class="service-feature-link">
+
+                                    Send a Same-Day Shipment
+
+                                    <i class="fa-solid fa-arrow-right"></i>
+
+                                </a>
+
+                            </div>
+
+                        </article>
+
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="service-explorer-arrow next"
+                        id="serviceExplorerNext"
+                        aria-label="Next service">
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- CAROUSEL FOOTER -->
+
+                <div class="service-carousel-footer">
+
+                    <div class="service-carousel-counter">
+
+                        <strong id="serviceExplorerCurrent">
+                            01
+                        </strong>
+
+                        <span>/</span>
+
+                        <span>
+                            04
+                        </span>
+
+                    </div>
+
+
+                    <div class="service-carousel-progress">
+
+                        <span id="serviceExplorerProgress"></span>
+
+                    </div>
+
+
+                    <div class="service-carousel-label">
+                        DRAG / CLICK TO EXPLORE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION 03 — SERVICE GRID
+             ===================================================== -->
+
+        <section class="service-grid-section section-dark"
+                 id="express">
+
+            <div class="container">
+
+
+                <div class="service-grid-heading reveal">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            MORE SOLUTIONS
+                        </span>
+
+                        <h2>
+                            Designed for
+                            <span>Real-World Movement.</span>
+                        </h2>
+
+                    </div>
+
+
+                    <p>
+
+                        From everyday parcels to time-sensitive
+                        business shipments, choose a service
+                        that fits the way you move.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="premium-service-grid">
+
+
+                    <article class="premium-service-card reveal">
+
+                        <div class="premium-card-top">
+
+                            <span>01</span>
+
+                            <i class="fa-solid fa-file-circle-check"></i>
+
+                        </div>
+
+                        <h3>
+                            Document Courier
+                        </h3>
+
+                        <p>
+                            Secure movement of contracts,
+                            certificates, records and other
+                            important documents.
+                        </p>
+
+                        <a href="tracking.html">
+                            Explore
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="premium-service-card featured reveal">
+
+                        <div class="premium-card-top">
+
+                            <span>02</span>
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                        </div>
+
+                        <h3>
+                            Parcel Delivery
+                        </h3>
+
+                        <p>
+                            Flexible delivery options for
+                            personal parcels, online orders
+                            and everyday shipments.
+                        </p>
+
+                        <a href="tracking.html">
+                            Explore
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="premium-service-card reveal">
+
+                        <div class="premium-card-top">
+
+                            <span>03</span>
+
+                            <i class="fa-solid fa-building"></i>
+
+                        </div>
+
+                        <h3>
+                            Corporate Shipping
+                        </h3>
+
+                        <p>
+                            Structured shipping support for
+                            companies managing regular
+                            courier requirements.
+                        </p>
+
+                        <a href="contact.html">
+                            Explore
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="premium-service-card reveal">
+
+                        <div class="premium-card-top">
+
+                            <span>04</span>
+
+                            <i class="fa-solid fa-globe"></i>
+
+                        </div>
+
+                        <h3>
+                            Global Delivery
+                        </h3>
+
+                        <p>
+                            International shipping solutions
+                            designed to keep cross-border
+                            deliveries moving smoothly.
+                        </p>
+
+                        <a href="tracking.html">
+                            Explore
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="premium-service-card reveal">
+
+                        <div class="premium-card-top">
+
+                            <span>05</span>
+
+                            <i class="fa-solid fa-clock"></i>
+
+                        </div>
+
+                        <h3>
+                            Scheduled Delivery
+                        </h3>
+
+                        <p>
+                            Plan pickups and deliveries around
+                            your preferred operating schedule.
+                        </p>
+
+                        <a href="contact.html">
+                            Explore
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </article>
+
+
+
+                    <article class="premium-service-card reveal">
+
+                        <div class="premium-card-top">
+
+                            <span>06</span>
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                        </div>
+
+                        <h3>
+                            Secure Handling
+                        </h3>
+
+                        <p>
+                            Careful handling processes for
+                            shipments that require additional
+                            attention and visibility.
+                        </p>
+
+                        <a href="contact.html">
+                            Explore
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION 04 — HOW IT WORKS
+             ===================================================== -->
+
+        <section class="service-process section-cream">
+
+            <div class="container">
+
+
+                <div class="section-heading centered reveal">
+
+                    <span class="section-kicker">
+                        SIMPLE BY DESIGN
+                    </span>
+
+                    <h2>
+                        From Pickup
+                        <span>to Delivery.</span>
+                    </h2>
+
+                    <p>
+                        A clear process keeps every shipment
+                        moving without unnecessary friction.
+                    </p>
+
+                </div>
+
+
+
+                <div class="process-track">
+
+
+                    <div class="service-process-step reveal">
+
+                        <span class="process-number">
+                            01
+                        </span>
+
+                        <div class="process-icon">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+
+                        <h3>
+                            Book
+                        </h3>
+
+                        <p>
+                            Tell us what you need to send,
+                            where it needs to go and when.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="process-line"></div>
+
+
+
+                    <div class="service-process-step reveal">
+
+                        <span class="process-number">
+                            02
+                        </span>
+
+                        <div class="process-icon">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+
+                        <h3>
+                            Pickup
+                        </h3>
+
+                        <p>
+                            Our delivery network collects
+                            your shipment from the selected
+                            pickup point.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="process-line"></div>
+
+
+
+                    <div class="service-process-step reveal">
+
+                        <span class="process-number">
+                            03
+                        </span>
+
+                        <div class="process-icon">
+                            <i class="fa-solid fa-route"></i>
+                        </div>
+
+                        <h3>
+                            Move
+                        </h3>
+
+                        <p>
+                            Your shipment travels through
+                            our coordinated delivery network.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="process-line"></div>
+
+
+
+                    <div class="service-process-step reveal">
+
+                        <span class="process-number">
+                            04
+                        </span>
+
+                        <div class="process-icon">
+                            <i class="fa-solid fa-house-circle-check"></i>
+                        </div>
+
+                        <h3>
+                            Deliver
+                        </h3>
+
+                        <p>
+                            The shipment reaches its destination
+                            with delivery confirmation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION 05 — BUSINESS LOGISTICS
+             ===================================================== -->
+
+        <section class="business-service-section"
+                 id="business">
+
+            <div class="business-service-image">
+
+                <img
+                    src="assets/images/business-shipping.jpg"
+                    alt="NEXORA business logistics">
+
+                <div class="business-service-overlay"></div>
+
+            </div>
+
+
+            <div class="container">
+
+                <div class="business-service-content reveal">
+
+                    <span class="section-kicker">
+                        LOGISTICS FOR BUSINESS
+                    </span>
+
+
+                    <h2>
+                        Make Every
+                        <span>Shipment</span>
+                        Part of the Plan.
+                    </h2>
+
+
+                    <p>
+
+                        Your logistics should support your
+                        business — not slow it down. NEXORA
+                        provides dependable courier infrastructure
+                        for teams that ship regularly and need
+                        predictable service.
+
+                    </p>
+
+
+                    <div class="business-service-points">
+
+                        <div>
+
+                            <i class="fa-solid fa-chart-line"></i>
+
+                            <span>
+                                Scalable shipment operations
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <i class="fa-solid fa-calendar-check"></i>
+
+                            <span>
+                                Planned pickup schedules
+                            </span>
+
+                        </div>
+
+                        <div>
+
+                            <i class="fa-solid fa-headset"></i>
+
+                            <span>
+                                Dedicated support
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="contact.html"
+                       class="primary-btn">
+
+                        Discuss Business Shipping
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION 06 — SERVICE PROMISE
+             ===================================================== -->
+
+        <section class="service-promise section-blue">
+
+            <div class="container">
+
+
+                <div class="promise-layout">
+
+
+                    <div class="promise-heading reveal">
+
+                        <span class="section-kicker">
+                            THE NEXORA STANDARD
+                        </span>
+
+                        <h2>
+                            Every Service.
+                            <em>One Standard.</em>
+                        </h2>
+
+                    </div>
+
+
+                    <div class="promise-grid">
+
+
+                        <div class="promise-item reveal">
+
+                            <span>01</span>
+
+                            <i class="fa-solid fa-bolt"></i>
+
+                            <h3>
+                                Speed
+                            </h3>
+
+                            <p>
+                                Delivery options designed
+                                around your timeline.
+                            </p>
+
+                        </div>
+
+
+                        <div class="promise-item reveal">
+
+                            <span>02</span>
+
+                            <i class="fa-solid fa-eye"></i>
+
+                            <h3>
+                                Visibility
+                            </h3>
+
+                            <p>
+                                Know where your shipment is
+                                throughout its journey.
+                            </p>
+
+                        </div>
+
+
+                        <div class="promise-item reveal">
+
+                            <span>03</span>
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <h3>
+                                Trust
+                            </h3>
+
+                            <p>
+                                Reliable processes built
+                                around every shipment.
+                            </p>
+
+                        </div>
+
+
+                        <div class="promise-item reveal">
+
+                            <span>04</span>
+
+                            <i class="fa-solid fa-headset"></i>
+
+                            <h3>
+                                Support
+                            </h3>
+
+                            <p>
+                                Human assistance whenever
+                                your shipment needs attention.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SECTION 07 — FINAL CTA
+             ===================================================== -->
+
+        <section class="cta-section service-final-cta">
+
+            <div class="cta-background">
+
+                <img
+                    src="assets/images/courier-road.jpg"
+                    alt="Courier road delivery">
+
+            </div>
+
+
+            <div class="container">
+
+                <div class="cta-content reveal">
+
+                    <span class="section-kicker">
+                        READY TO MOVE?
+                    </span>
+
+
+                    <h2>
+                        Let's Get Your
+                        <span>Shipment Moving.</span>
+                    </h2>
+
+
+                    <p>
+                        Choose the service that fits your
+                        shipment and let NEXORA take care
+                        of the journey.
+                    </p>
+
+
+                    <div class="cta-actions">
+
+                        <a href="tracking.html"
+                           class="primary-btn magnetic-btn ripple-btn">
+
+                            Track a Shipment
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                        <a href="contact.html"
+                           class="outline-light-btn">
+
+                            Talk to NEXORA
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand-logo footer-logo">
+
+                    <span class="brand-icon">
+                        <i class="fa-solid fa-location-arrow"></i>
+                    </span>
+
+                    <span class="brand-copy">
+                        <strong>NEXORA</strong>
+                        <small>EXPRESS</small>
+                    </span>
+
+                </a>
+
+
+                <p>
+                    Intelligent courier infrastructure
+                    for a world that never stops moving.
+                </p>
+
+
+                <div class="footer-socials">
+
+                    <a href="404.html" aria-label="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="404.html" aria-label="X">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+
+                    <a href="404.html" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="404.html" aria-label="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    PLATFORM
+                </h4>
+
+                <a href="services.html">
+                    Courier Services
+                </a>
+
+                <a href="track.html">
+                    Track Shipment
+                </a>
+
+                <a href="404.html">
+                    Business Shipping
+                </a>
+
+                <a href="404.html">
+                    Delivery Network
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    COMPANY
+                </h4>
+
+                <a href="about.html">
+                    About NEXORA
+                </a>
+
+                <a href="404.html">
+                    Careers
+                </a>
+
+                <a href="404.html">
+                    Newsroom
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    SUPPORT
+                </h4>
+
+                <a href="404.html">
+                    Help Center
+                </a>
+
+                <a href="404.html">
+                    Shipping Guide
+                </a>
+
+                <a href="404.html">
+                    Service Terms
+                </a>
+
+                <a href="404.html">
+                    Privacy
+                </a>
+
+            </div>
+
+
+            <div class="footer-newsletter">
+
+                <h4>
+                    STAY IN MOTION
+                </h4>
+
+                <p>
+                    Receive delivery insights,
+                    service updates and logistics news.
+                </p>
+
+                <form id="newsletterForm">
+
+                    <div class="newsletter-input">
+
+                        <input
+                            type="email"
+                            id="newsletterEmail"
+                            placeholder="Work email address"
+                            aria-label="Email address"
+                        >
+
+                        <button
+                            type="submit"
+                            aria-label="Subscribe"
+                        >
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                    <small id="newsletterMessage"></small>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 NEXORA EXPRESS. All rights reserved.
+            </span>
+
+            <div>
+
+                <a href="404.html">
+                    Privacy Policy
+                </a>
+
+                <a href="404.html">
+                    Terms
+                </a>
+
+                <a href="404.html">
+                    Security
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+    <!-- =========================================================
+         LOGIN MODAL
+         ========================================================= -->
+
+    <div class="modal-overlay"
+         id="loginModal"
+         aria-hidden="true">
+
+
+        <div class="login-modal">
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="loginModalClose"
+                aria-label="Close login">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="login-visual">
+
+                <img
+                    src="assets/images/login-courier.jpg"
+                    alt="NEXORA Express">
+
+                <div class="login-visual-overlay"></div>
+
+
+                <div class="login-visual-content">
+
+                    <span class="secure-badge">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        SECURE ACCESS
+
+                    </span>
+
+
+                    <h3>
+                        Your shipments.
+                        <span>One place.</span>
+                    </h3>
+
+
+                    <p>
+                        Access tracking, delivery history
+                        and shipment tools.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="login-content">
+
+                <div class="login-heading">
+
+                    <span class="section-kicker">
+                        NEXORA EXPRESS
+                    </span>
+
+                    <h2 id="loginTitle">
+                        Welcome Back
+                    </h2>
+
+                    <p>
+                        Sign in to continue.
+                    </p>
+
+                </div>
+
+
+
+                <div class="login-tabs">
+
+                    <button
+                        type="button"
+                        class="login-tab active"
+                        data-login-tab="user">
+
+                        User Login
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="login-tab"
+                        data-login-tab="admin">
+
+                        Admin Login
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- USER LOGIN -->
+
+                <form class="login-form active"
+                      id="userLoginForm"
+                      data-login-form="user">
+
+
+                    <div class="input-wrap">
+
+                        <label for="userEmail">
+                            Email Address
+                        </label>
+
+                        <div>
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="userEmail"
+                                placeholder="Enter your email"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="input-wrap">
+
+                        <label for="userPassword">
+                            Password
+                        </label>
+
+                        <div>
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="userPassword"
+                                placeholder="Enter your password"
+                                required>
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-password-target="userPassword">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="login-options">
+
+                        <label class="remember-option">
+
+                            <input type="checkbox">
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-submit">
+
+                        Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <div class="login-create">
+
+                        New to NEXORA?
+
+                        <a href="#">
+                            Create an account
+                        </a>
+
+                    </div>
+
+                </form>
+
+
+
+                <!-- ADMIN LOGIN -->
+
+                <form class="login-form"
+                      id="adminLoginForm"
+                      data-login-form="admin">
+
+
+                    <div class="input-wrap">
+
+                        <label for="adminEmail">
+                            Admin Email
+                        </label>
+
+                        <div>
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="adminEmail"
+                                placeholder="Enter admin email"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="input-wrap">
+
+                        <label for="adminPassword">
+                            Password
+                        </label>
+
+                        <div>
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="adminPassword"
+                                placeholder="Enter password"
+                                required>
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-password-target="adminPassword">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-submit admin-submit">
+
+                        Admin Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <div class="login-security">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        Protected administrator access
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         BACK TO TOP
+         ========================================================= -->
+
+    <button
+        type="button"
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+
+
+    <!-- MAIN JS -->
+
+    <script src="js/main.js"></script>
+
+
+    <!-- SERVICES CAROUSEL -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const slides =
+                document.querySelectorAll(".service-feature-slide");
+
+            const next =
+                document.getElementById("serviceExplorerNext");
+
+            const prev =
+                document.getElementById("serviceExplorerPrev");
+
+            const current =
+                document.getElementById("serviceExplorerCurrent");
+
+            const progress =
+                document.getElementById("serviceExplorerProgress");
+
+            if (!slides.length) return;
+
+
+            let activeIndex = 0;
+            let autoPlay;
+
+
+            function showSlide(index) {
+
+                slides.forEach((slide, i) => {
+
+                    slide.classList.toggle(
+                        "active",
+                        i === index
+                    );
+
+                });
+
+
+                current.textContent =
+                    String(index + 1).padStart(2, "0");
+
+
+                progress.style.width =
+                    `${((index + 1) / slides.length) * 100}%`;
+
+            }
+
+
+            function nextSlide() {
+
+                activeIndex =
+                    (activeIndex + 1) % slides.length;
+
+                showSlide(activeIndex);
+
+            }
+
+
+            function previousSlide() {
+
+                activeIndex =
+                    (activeIndex - 1 + slides.length) %
+                    slides.length;
+
+                showSlide(activeIndex);
+
+            }
+
+
+            function startAutoPlay() {
+
+                clearInterval(autoPlay);
+
+                autoPlay = setInterval(
+                    nextSlide,
+                    5000
+                );
+
+            }
+
+
+            next?.addEventListener(
+                "click",
+                () => {
+
+                    nextSlide();
+                    startAutoPlay();
+
+                }
+            );
+
+
+            prev?.addEventListener(
+                "click",
+                () => {
+
+                    previousSlide();
+                    startAutoPlay();
+
+                }
+            );
+
+
+            const carousel =
+                document.getElementById(
+                    "serviceExplorerCarousel"
+                );
+
+
+            let touchStartX = 0;
+
+
+            carousel?.addEventListener(
+                "touchstart",
+                e => {
+
+                    touchStartX =
+                        e.changedTouches[0].screenX;
+
+                },
+                { passive: true }
+            );
+
+
+            carousel?.addEventListener(
+                "touchend",
+                e => {
+
+                    const touchEndX =
+                        e.changedTouches[0].screenX;
+
+                    const difference =
+                        touchStartX - touchEndX;
+
+
+                    if (Math.abs(difference) > 50) {
+
+                        if (difference > 0) {
+                            nextSlide();
+                        } else {
+                            previousSlide();
+                        }
+
+                        startAutoPlay();
+
+                    }
+
+                },
+                { passive: true }
+            );
+
+
+            showSlide(0);
+            startAutoPlay();
+
+        });
+
+    </script>
+
+</body>
+
+</html>

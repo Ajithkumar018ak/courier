@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Tracking | NEXORA EXPRESS</title>
+
+    <meta name="description"
+          content="Track your NEXORA EXPRESS shipment in real time with complete delivery visibility.">
+
+
+    <!-- =====================================================
+         FONTS
+         ===================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         FONT AWESOME
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- =====================================================
+         CSS
+         ===================================================== -->
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="css/animations.css">
+
+    <link rel="stylesheet"
+          href="css/tracking.css">
+
+</head>
+
+
+<body class="tracking-page">
+
+
+    <!-- =====================================================
+         PRELOADER
+         ===================================================== -->
+
+    <div class="preloader"
+         id="preloader">
+
+        <div class="preloader-courier-scene">
+
+
+            <div class="preloader-brand">
+
+                <span class="preloader-brand-icon">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </span>
+
+                <div>
+
+                    <strong>NEXORA</strong>
+
+                    <span>EXPRESS</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="courier-route">
+
+                <span class="route-line"></span>
+
+
+                <div class="courier-letter">
+
+                    <div class="letter-fold"></div>
+
+                    <span class="letter-line line-one"></span>
+
+                    <span class="letter-line line-two"></span>
+
+                    <span class="letter-line line-three"></span>
+
+                </div>
+
+
+                <div class="delivery-box">
+
+                    <div class="box-top"></div>
+
+                    <div class="box-front">
+
+                        <span class="box-label">
+                            N
+                        </span>
+
+                    </div>
+
+                    <div class="box-side"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="preloader-status">
+
+                <span>
+                    PREPARING YOUR DELIVERY
+                </span>
+
+                <strong id="loadingPercent">
+                    0%
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="site-header" id="siteHeader">
+
+    <nav class="navbar">
+
+        <a href="index.html" class="brand-logo">
+
+            <span class="brand-icon">
+                <i class="fa-solid fa-location-arrow"></i>
+            </span>
+
+            <span class="brand-copy">
+                <strong>NEXORA</strong>
+                <small>EXPRESS</small>
+            </span>
+
+        </a>
+
+
+        <div class="desktop-navigation">
+
+            <a href="index.html" class="nav-link ">Home</a>
+
+            <a href="about.html" class="nav-link">
+                About
+            </a>
+
+           
+ <a href="service.html" class="nav-link">
+                services
+            </a>
+
+             
+            
+
+        
+
+            <a href="track.html" class="nav-link active">
+                Track 
+            </a>
+
+            <a href="contact.html" class="nav-link">
+                Contact
+            </a>
+
+        </div>
+
+
+        <div class="navbar-actions">
+
+            <button
+                class="nav-login"
+                type="button"
+                data-login-open
+            >
+                Sign In
+            </button>
+
+            <a
+                href="404.html"
+                class="primary-btn nav-cta magnetic-btn ripple-btn"
+            >
+                Ship Now
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+        </button>
+
+    </nav>
+
+</header>
+
+    <!-- =====================================================
+         MOBILE DRAWER
+         ===================================================== -->
+
+    <div class="mobile-overlay"
+         id="mobileOverlay"></div>
+
+
+    <aside class="mobile-drawer"
+           id="mobileDrawer">
+
+
+        <div class="drawer-header">
+
+
+            <a href="index.html"
+               class="drawer-logo">
+
+                <span class="brand-icon">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                </span>
+
+
+                <span class="brand-copy">
+
+                    <strong>
+                        NEXORA
+                    </strong>
+
+                    <small>
+                        EXPRESS
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="drawer-close"
+                id="drawerClose"
+                aria-label="Close navigation">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="drawer-navigation">
+
+            <a href="index.html"
+               class="drawer-link">
+
+                <span>01</span>
+                Home
+
+            </a>
+
+
+            <a href="about.html"
+               class="drawer-link">
+
+                <span>02</span>
+                About
+
+            </a>
+
+
+            <a href="services.html"
+               class="drawer-link">
+
+                <span>03</span>
+                Services
+
+            </a>
+
+
+            <a href="tracking.html"
+               class="drawer-link active">
+
+                <span>04</span>
+                Tracking
+
+            </a>
+
+
+            <a href="contact.html"
+               class="drawer-link">
+
+                <span>05</span>
+                Contact
+
+            </a>
+
+        </div>
+
+
+        <div class="drawer-bottom">
+
+
+            <button
+                type="button"
+                class="drawer-login"
+                data-login-open>
+
+                <i class="fa-regular fa-user"></i>
+
+                Sign In
+
+            </button>
+
+
+            <a href="#tracking-tool"
+               class="primary-btn">
+
+                Track Shipment
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <main>
+
+
+        <!-- =================================================
+             SECTION 01 — TRACKING HERO
+             ================================================= -->
+
+        <section class="tracking-hero">
+
+
+            <div class="tracking-hero-background">
+
+                <img
+                    src="assets/images/tracking-map.jpg"
+                    alt="NEXORA shipment tracking">
+
+                <div class="tracking-hero-overlay"></div>
+
+            </div>
+
+
+            <div class="container">
+
+                <div class="tracking-hero-layout">
+
+
+                    <!-- LEFT CONTENT -->
+
+                    <div class="tracking-hero-content reveal">
+
+
+                        <div class="hero-eyebrow">
+
+                            <span class="eyebrow-line"></span>
+
+                            SHIPMENT VISIBILITY
+
+                        </div>
+
+
+                        <h1>
+
+                            Know Where
+                            <span>Your Shipment</span>
+                            <em>Is Going.</em>
+
+                        </h1>
+
+
+                        <p>
+
+                            Follow your shipment from pickup
+                            to destination with clear, real-time
+                            tracking information designed to keep
+                            every delivery within reach.
+
+                        </p>
+
+
+                        <div class="tracking-hero-actions">
+
+                            <a href="#tracking-tool"
+                               class="primary-btn magnetic-btn ripple-btn">
+
+                                Track Your Shipment
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+
+                            <a href="#how-tracking-works"
+                               class="secondary-btn">
+
+                                How Tracking Works
+
+                            </a>
+
+                        </div>
+
+
+                        <div class="tracking-trust-row">
+
+                            <div>
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                Real-time updates
+
+                            </div>
+
+
+                            <div>
+
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                                Secure shipment data
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- RIGHT TRACKING VISUAL -->
+
+                    <div class="tracking-hero-visual reveal-right">
+
+
+                        <div class="tracking-live-card">
+
+
+                            <div class="live-card-header">
+
+                                <div>
+
+                                    <span>
+                                        LIVE SHIPMENT
+                                    </span>
+
+                                    <strong>
+                                        NX 482 719 365
+                                    </strong>
+
+                                </div>
+
+
+                                <span class="live-pill">
+
+                                    <i class="fa-solid fa-circle"></i>
+
+                                    LIVE
+
+                                </span>
+
+                            </div>
+
+
+
+                            <div class="live-map">
+
+                                <img
+                                    src="assets/images/tracking-map.jpg"
+                                    alt="Shipment route map">
+
+
+                                <div class="map-route-line"></div>
+
+
+                                <div class="hero-map-pin origin">
+
+                                    <span></span>
+
+                                </div>
+
+
+                                <div class="hero-map-pin current">
+
+                                    <span>
+                                        <i class="fa-solid fa-location-arrow"></i>
+                                    </span>
+
+                                </div>
+
+
+                                <div class="hero-map-pin destination">
+
+                                    <span></span>
+
+                                </div>
+
+
+                                <div class="map-moving-dot"></div>
+
+                            </div>
+
+
+
+                            <div class="live-card-status">
+
+
+                                <div>
+
+                                    <small>
+                                        CURRENT STATUS
+                                    </small>
+
+                                    <strong>
+                                        In Transit
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <small>
+                                        ETA
+                                    </small>
+
+                                    <strong>
+                                        Today, 4:30 PM
+                                    </strong>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="live-progress">
+
+                                <div class="live-progress-top">
+
+                                    <span>
+                                        Shipment Progress
+                                    </span>
+
+                                    <strong>
+                                        68%
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="live-progress-track">
+
+                                    <span></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="tracking-mini-card">
+
+                            <span>
+                                LAST SCAN
+                            </span>
+
+                            <strong>
+                                Chennai Distribution Hub
+                            </strong>
+
+                            <small>
+                                12 minutes ago
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="tracking-hero-bottom">
+
+                    <span>
+                        TRACK • TRACE • DELIVER
+                    </span>
+
+                    <span>
+                        24 / 7 SHIPMENT VISIBILITY
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 02 — TRACKING TOOL
+             ================================================= -->
+
+        <section class="tracking-tool-section section-light"
+                 id="tracking-tool">
+
+
+            <div class="container">
+
+
+                <div class="tracking-tool-heading reveal">
+
+                    <span class="section-kicker">
+                        TRACK YOUR SHIPMENT
+                    </span>
+
+
+                    <h2>
+                        One Number.
+                        <span>Complete Visibility.</span>
+                    </h2>
+
+
+                    <p>
+                        Enter your NEXORA shipment number
+                        to access the latest delivery status.
+                    </p>
+
+                </div>
+
+
+
+                <div class="tracking-tool-card reveal">
+
+
+                    <div class="tracking-tool-icon">
+
+                        <i class="fa-solid fa-location-crosshairs"></i>
+
+                    </div>
+
+
+                    <div class="tracking-input-area">
+
+                        <label for="trackingNumber">
+                            SHIPMENT NUMBER
+                        </label>
+
+
+                        <div class="tracking-input-wrap">
+
+                            <input
+                                type="text"
+                                id="trackingNumber"
+                                placeholder="Enter tracking number"
+                                autocomplete="off">
+
+
+                            <button
+                                type="button"
+                                id="trackingSearchButton"
+                                class="tracking-search-btn">
+
+                                Track Now
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <small id="trackingMessage">
+
+                            Example: NX 482 719 365
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 03 — LIVE STATUS
+             ================================================= -->
+
+        <section class="tracking-status-section section-dark">
+
+
+            <div class="container">
+
+
+                <div class="tracking-status-layout">
+
+
+                    <!-- LEFT TEXT -->
+
+                    <div class="tracking-status-copy reveal">
+
+
+                        <span class="section-kicker">
+                            LIVE DELIVERY STATUS
+                        </span>
+
+
+                        <h2>
+                            Every Movement.
+                            <span>Clearly Visible.</span>
+                        </h2>
+
+
+                        <p>
+
+                            Shipment tracking should never feel
+                            like guesswork. NEXORA gives you a
+                            clear view of where your package was,
+                            where it is now and what happens next.
+
+                        </p>
+
+
+                        <div class="status-highlights">
+
+
+                            <div>
+
+                                <span>01</span>
+
+                                <strong>
+                                    Pickup confirmed
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>02</span>
+
+                                <strong>
+                                    Shipment in transit
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <span>03</span>
+
+                                <strong>
+                                    Destination reached
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- RIGHT IMAGE -->
+
+                    <div class="tracking-status-visual reveal-right">
+
+                        <img
+                            src="assets/images/courier-package.jpg"
+                            alt="Courier shipment package">
+
+                        <div class="status-image-card">
+
+                            <span>
+                                SHIPMENT STATUS
+                            </span>
+
+                            <strong>
+                                Moving Through Network
+                            </strong>
+
+                            <div>
+
+                                <i class="fa-solid fa-circle"></i>
+
+                                Updated just now
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 04 — HOW TRACKING WORKS
+             ================================================= -->
+
+        <section class="tracking-how-section section-cream"
+                 id="how-tracking-works">
+
+
+            <div class="container">
+
+
+                <div class="section-heading centered reveal">
+
+                    <span class="section-kicker">
+                        HOW IT WORKS
+                    </span>
+
+
+                    <h2>
+                        Follow The
+                        <span>Journey.</span>
+                    </h2>
+
+
+                    <p>
+
+                        Every scan creates another point of
+                        visibility between pickup and delivery.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="tracking-journey">
+
+
+                    <div class="journey-line"></div>
+
+
+                    <article class="journey-step reveal">
+
+                        <span class="journey-number">
+                            01
+                        </span>
+
+
+                        <div class="journey-icon">
+
+                            <i class="fa-solid fa-box"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Shipment Created
+                        </h3>
+
+
+                        <p>
+                            Your shipment enters the
+                            NEXORA network.
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="journey-step reveal">
+
+                        <span class="journey-number">
+                            02
+                        </span>
+
+
+                        <div class="journey-icon">
+
+                            <i class="fa-solid fa-truck"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Picked Up
+                        </h3>
+
+
+                        <p>
+                            Our courier collects the
+                            shipment from the pickup point.
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="journey-step reveal">
+
+                        <span class="journey-number">
+                            03
+                        </span>
+
+
+                        <div class="journey-icon">
+
+                            <i class="fa-solid fa-route"></i>
+
+                        </div>
+
+
+                        <h3>
+                            In Transit
+                        </h3>
+
+
+                        <p>
+                            Your shipment moves through
+                            the delivery network.
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="journey-step reveal">
+
+                        <span class="journey-number">
+                            04
+                        </span>
+
+
+                        <div class="journey-icon">
+
+                            <i class="fa-solid fa-house-circle-check"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Delivered
+                        </h3>
+
+
+                        <p>
+                            Delivery is completed and
+                            confirmation is recorded.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 05 — IMAGE + CONTENT
+             ================================================= -->
+
+        <section class="tracking-visibility-section section-blue">
+
+
+            <div class="container">
+
+
+                <div class="tracking-visibility-layout">
+
+
+                    <!-- IMAGE LEFT -->
+
+                    <div class="tracking-visibility-image reveal">
+
+                        <img
+                            src="assets/images/logistics-network.jpg"
+                            alt="NEXORA logistics network">
+
+
+                        <div class="visibility-image-label">
+
+                            <span>
+                                NETWORK
+                            </span>
+
+                            <strong>
+                                CONNECTED
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CONTENT RIGHT -->
+
+                    <div class="tracking-visibility-copy reveal-right">
+
+
+                        <span class="section-kicker">
+                            MORE THAN A STATUS
+                        </span>
+
+
+                        <h2>
+                            Visibility That
+                            <span>Moves With You.</span>
+                        </h2>
+
+
+                        <p>
+
+                            Tracking is more than seeing a
+                            location on a screen. It is knowing
+                            what has happened, understanding
+                            what is happening and staying ready
+                            for what comes next.
+
+                        </p>
+
+
+                        <div class="visibility-list">
+
+
+                            <div>
+
+                                <i class="fa-solid fa-clock"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Time-stamped updates
+                                    </strong>
+
+                                    <span>
+                                        See when key shipment
+                                        events happen.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <i class="fa-solid fa-map-location-dot"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Network visibility
+                                    </strong>
+
+                                    <span>
+                                        Follow your shipment
+                                        across the route.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div>
+
+                                <i class="fa-solid fa-bell"></i>
+
+                                <div>
+
+                                    <strong>
+                                        Delivery awareness
+                                    </strong>
+
+                                    <span>
+                                        Stay informed as the
+                                        shipment approaches.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 06 — TRACKING EVENT PANEL
+             ================================================= -->
+
+        <section class="tracking-events-section section-white">
+
+
+            <div class="container">
+
+
+                <div class="tracking-events-layout">
+
+
+                    <!-- LEFT CONTENT -->
+
+                    <div class="tracking-events-copy reveal">
+
+
+                        <span class="section-kicker">
+                            SHIPMENT TIMELINE
+                        </span>
+
+
+                        <h2>
+                            From First Scan
+                            <span>to Final Door.</span>
+                        </h2>
+
+
+                        <p>
+
+                            A transparent shipment timeline
+                            keeps the entire delivery journey
+                            easy to understand.
+
+                        </p>
+
+
+                        <a href="#tracking-tool"
+                           class="text-link">
+
+                            Track Another Shipment
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- RIGHT TIMELINE -->
+
+                    <div class="tracking-timeline reveal-right">
+
+
+                        <div class="timeline-item completed">
+
+                            <div class="timeline-marker">
+
+                                <i class="fa-solid fa-check"></i>
+
+                            </div>
+
+
+                            <div class="timeline-content">
+
+                                <span>
+                                    08:42 AM
+                                </span>
+
+                                <strong>
+                                    Shipment Picked Up
+                                </strong>
+
+                                <p>
+                                    Chennai, Tamil Nadu
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item completed">
+
+                            <div class="timeline-marker">
+
+                                <i class="fa-solid fa-check"></i>
+
+                            </div>
+
+
+                            <div class="timeline-content">
+
+                                <span>
+                                    10:18 AM
+                                </span>
+
+                                <strong>
+                                    Arrived at Distribution Hub
+                                </strong>
+
+                                <p>
+                                    Chennai Distribution Centre
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item active">
+
+                            <div class="timeline-marker">
+
+                                <i class="fa-solid fa-truck"></i>
+
+                            </div>
+
+
+                            <div class="timeline-content">
+
+                                <span>
+                                    01:36 PM
+                                </span>
+
+                                <strong>
+                                    Shipment In Transit
+                                </strong>
+
+                                <p>
+                                    Moving toward destination
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="timeline-item upcoming">
+
+                            <div class="timeline-marker">
+
+                                <i class="fa-solid fa-house"></i>
+
+                            </div>
+
+
+                            <div class="timeline-content">
+
+                                <span>
+                                    EXPECTED
+                                </span>
+
+                                <strong>
+                                    Out for Delivery
+                                </strong>
+
+                                <p>
+                                    Destination city
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 07 — FAQ STYLE TRACKING INFO
+             ================================================= -->
+
+        <section class="tracking-info-section section-light">
+
+
+            <div class="container">
+
+
+                <div class="tracking-info-heading reveal">
+
+                    <span class="section-kicker">
+                        TRACKING GUIDE
+                    </span>
+
+
+                    <h2>
+                        Questions About
+                        <span>Tracking?</span>
+                    </h2>
+
+                </div>
+
+
+
+                <div class="tracking-info-grid">
+
+
+                    <article class="tracking-info-card reveal">
+
+                        <span>
+                            01
+                        </span>
+
+                        <i class="fa-solid fa-hashtag"></i>
+
+                        <h3>
+                            Where can I find my tracking number?
+                        </h3>
+
+                        <p>
+
+                            Your shipment number is provided
+                            when your delivery is created and
+                            can also be found in your shipment
+                            confirmation details.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="tracking-info-card reveal">
+
+                        <span>
+                            02
+                        </span>
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        <h3>
+                            How often is tracking updated?
+                        </h3>
+
+                        <p>
+
+                            Tracking information updates when
+                            important shipment events are
+                            recorded across the NEXORA network.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <article class="tracking-info-card reveal">
+
+                        <span>
+                            03
+                        </span>
+
+                        <i class="fa-solid fa-headset"></i>
+
+                        <h3>
+                            Need help with a shipment?
+                        </h3>
+
+                        <p>
+
+                            If your shipment requires attention,
+                            our support team can help you
+                            understand the latest available
+                            delivery information.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SECTION 08 — CTA
+             ================================================= -->
+
+        <section class="cta-section tracking-final-cta">
+
+
+            <div class="cta-background">
+
+                <img
+                    src="assets/images/courier-road.jpg"
+                    alt="NEXORA courier delivery">
+
+            </div>
+
+
+            <div class="container">
+
+                <div class="cta-content reveal">
+
+
+                    <span class="section-kicker">
+                        KEEP MOVING
+                    </span>
+
+
+                    <h2>
+
+                        Your Shipment
+                        <span>Is Never Out of Sight.</span>
+
+                    </h2>
+
+
+                    <p>
+
+                        Track your delivery, stay informed
+                        and move forward with confidence.
+
+                    </p>
+
+
+                    <div class="cta-actions">
+
+                        <a href="#tracking-tool"
+                           class="primary-btn magnetic-btn ripple-btn">
+
+                            Track a Shipment
+
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </a>
+
+
+                        <a href="contact.html"
+                           class="outline-light-btn">
+
+                            Contact NEXORA
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+
+            <div class="footer-main">
+
+
+                <div class="footer-brand">
+
+
+                    <a href="index.html"
+                       class="footer-logo">
+
+                        <span class="brand-icon">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                        </span>
+
+
+                        <span class="brand-copy">
+
+                            <strong>
+                                NEXORA
+                            </strong>
+
+                            <small>
+                                EXPRESS
+                            </small>
+
+                        </span>
+
+                    </a>
+
+
+                    <p>
+
+                        Moving people, parcels and possibilities
+                        through a smarter courier network.
+
+                    </p>
+
+
+                    <div class="footer-socials">
+
+                        <a href="#">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Company
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            <a href="about.html">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="services.html">
+                                Services
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="tracking.html">
+                                Tracking
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">
+                                Contact
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-column">
+
+                    <h4>
+                        Tracking
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            <a href="#tracking-tool">
+                                Track Shipment
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#how-tracking-works">
+                                How It Works
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#tracking-tool">
+                                Shipment Status
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">
+                                Support
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+
+                <div class="footer-newsletter">
+
+                    <h4>
+                        Stay in Motion
+                    </h4>
+
+                    <p>
+                        Get occasional updates from NEXORA.
+                    </p>
+
+
+                    <form id="newsletterForm">
+
+                        <div class="newsletter-input">
+
+                            <input
+                                type="email"
+                                id="newsletterEmail"
+                                placeholder="Your email address"
+                                autocomplete="email"
+                                required>
+
+
+                            <button type="submit"
+                                    aria-label="Subscribe">
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <small id="newsletterMessage"></small>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-bottom">
+
+                <span>
+                    © 2026 NEXORA EXPRESS. All rights reserved.
+                </span>
+
+                <span>
+                    SPEED • VISIBILITY • TRUST
+                </span>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         LOGIN MODAL
+         ===================================================== -->
+
+    <div class="modal-overlay"
+         id="loginModal"
+         aria-hidden="true">
+
+
+        <div class="login-modal">
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="loginModalClose"
+                aria-label="Close login">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+
+            <div class="login-visual">
+
+                <img
+                    src="assets/images/login-courier.jpg"
+                    alt="NEXORA Express">
+
+                <div class="login-visual-overlay"></div>
+
+
+                <div class="login-visual-content">
+
+                    <span class="secure-badge">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        SECURE ACCESS
+
+                    </span>
+
+
+                    <h3>
+
+                        Your shipments.
+                        <span>One place.</span>
+
+                    </h3>
+
+
+                    <p>
+
+                        Access tracking, delivery history
+                        and shipment tools.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="login-content">
+
+
+                <div class="login-heading">
+
+                    <span class="section-kicker">
+                        NEXORA EXPRESS
+                    </span>
+
+
+                    <h2 id="loginTitle">
+                        Welcome Back
+                    </h2>
+
+
+                    <p>
+                        Sign in to continue.
+                    </p>
+
+                </div>
+
+
+
+                <div class="login-tabs">
+
+                    <button
+                        type="button"
+                        class="login-tab active"
+                        data-login-tab="user">
+
+                        User Login
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="login-tab"
+                        data-login-tab="admin">
+
+                        Admin Login
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- USER LOGIN -->
+
+                <form
+                    class="login-form active"
+                    id="userLoginForm"
+                    data-login-form="user">
+
+
+                    <div class="input-wrap">
+
+                        <label for="userEmail">
+                            Email Address
+                        </label>
+
+
+                        <div>
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="userEmail"
+                                placeholder="Enter your email"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="input-wrap">
+
+                        <label for="userPassword">
+                            Password
+                        </label>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="userPassword"
+                                placeholder="Enter your password"
+                                required>
+
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-password-target="userPassword">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="login-options">
+
+                        <label class="remember-option">
+
+                            <input type="checkbox">
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-submit">
+
+                        Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <div class="login-create">
+
+                        New to NEXORA?
+
+                        <a href="#">
+                            Create an account
+                        </a>
+
+                    </div>
+
+                </form>
+
+
+
+                <!-- ADMIN LOGIN -->
+
+                <form
+                    class="login-form"
+                    id="adminLoginForm"
+                    data-login-form="admin">
+
+
+                    <div class="input-wrap">
+
+                        <label for="adminEmail">
+                            Admin Email
+                        </label>
+
+
+                        <div>
+
+                            <i class="fa-regular fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="adminEmail"
+                                placeholder="Enter admin email"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="input-wrap">
+
+                        <label for="adminPassword">
+                            Password
+                        </label>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="adminPassword"
+                                placeholder="Enter password"
+                                required>
+
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                data-password-target="adminPassword">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-submit admin-submit">
+
+                        Admin Sign In
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+
+                    <div class="login-security">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        Protected administrator access
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         BACK TO TOP
+         ===================================================== -->
+
+    <button
+        type="button"
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+
+
+    <!-- =====================================================
+         MAIN JS
+         ===================================================== -->
+
+    <script src="js/main.js"></script>
+
+
+
+    <!-- =====================================================
+         TRACKING PAGE JS
+         ===================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+
+                const trackingInput =
+                    document.getElementById(
+                        "trackingNumber"
+                    );
+
+
+                const trackingButton =
+                    document.getElementById(
+                        "trackingSearchButton"
+                    );
+
+
+                const trackingMessage =
+                    document.getElementById(
+                        "trackingMessage"
+                    );
+
+
+                if (!trackingInput || !trackingButton) {
+                    return;
+                }
+
+
+                trackingButton.addEventListener(
+                    "click",
+                    () => {
+
+
+                        const value =
+                            trackingInput.value.trim();
+
+
+                        if (!value) {
+
+                            trackingMessage.textContent =
+                                "Please enter your shipment number.";
+
+                            trackingMessage.classList.add(
+                                "error"
+                            );
+
+                            trackingInput.focus();
+
+                            return;
+
+                        }
+
+
+                        trackingMessage.textContent =
+                            "Shipment found. Latest tracking information is being prepared.";
+
+                        trackingMessage.classList.remove(
+                            "error"
+                        );
+
+                        trackingMessage.classList.add(
+                            "success"
+                        );
+
+
+                        document
+                            .querySelector(
+                                ".tracking-status-section"
+                            )
+                            ?.scrollIntoView({
+                                behavior: "smooth"
+                            });
+
+                    });
+
+
+                trackingInput.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (event.key === "Enter") {
+
+                            event.preventDefault();
+
+                            trackingButton.click();
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

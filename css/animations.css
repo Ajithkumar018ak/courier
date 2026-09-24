@@ -1,0 +1,2593 @@
+/* =========================================================
+   NEXORA EXPRESS — ANIMATIONS.CSS
+   Vanilla CSS Animations
+========================================================= */
+
+
+/* =========================================================
+   01. GLOBAL
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ============================================================
+   NEXORA EXPRESS — COURIER PRELOADER
+   ============================================================ */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #071b15;
+
+    overflow: hidden;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition:
+        opacity 0.7s ease,
+        visibility 0.7s ease;
+}
+
+
+/* PRELOADER EXIT */
+
+.preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* MAIN SCENE */
+
+.preloader-courier-scene {
+    width: min(520px, 88vw);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ============================================================
+   BRAND
+   ============================================================ */
+
+.preloader-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-bottom: 55px;
+
+    color: #ffffff;
+}
+
+.preloader-brand-icon {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 10px;
+
+    color: #f3b45c;
+
+    animation: courierBrandPulse 2s ease-in-out infinite;
+}
+
+.preloader-brand-icon i {
+    font-size: 17px;
+}
+
+.preloader-brand strong {
+    display: block;
+
+    font-size: 20px;
+    line-height: 1;
+
+    letter-spacing: 0.18em;
+    font-weight: 800;
+}
+
+.preloader-brand div span {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 8px;
+    letter-spacing: 0.3em;
+
+    opacity: 0.55;
+}
+
+
+/* ============================================================
+   COURIER ROUTE
+   ============================================================ */
+
+.courier-route {
+    position: relative;
+
+    width: 100%;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* ROUTE LINE */
+
+.route-line {
+    position: absolute;
+
+    left: 15px;
+    right: 85px;
+
+    top: 50%;
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.14);
+}
+
+
+/* moving route highlight */
+
+.route-line::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 75px;
+    height: 100%;
+
+    background: #f3b45c;
+
+    box-shadow:
+        0 0 12px rgba(243,180,92,0.55);
+
+    animation: routeTravel 1.5s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   LETTER / DOCUMENT
+   ============================================================ */
+
+.courier-letter {
+    position: absolute;
+
+    left: 8%;
+
+    width: 72px;
+    height: 52px;
+
+    background: #faf7f0;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,0.25);
+
+    z-index: 3;
+
+    animation: letterToBox 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+
+/* LETTER FOLD */
+
+.letter-fold {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 36px solid transparent;
+    border-right: 36px solid transparent;
+    border-top: 25px solid #e9dfcf;
+
+    z-index: 2;
+}
+
+
+/* LETTER LINES */
+
+.letter-line {
+    position: absolute;
+
+    left: 12px;
+
+    height: 3px;
+
+    border-radius: 4px;
+
+    background: #c8c0b3;
+}
+
+.line-one {
+    width: 35px;
+    bottom: 13px;
+}
+
+.line-two {
+    width: 27px;
+    bottom: 7px;
+}
+
+.line-three {
+    width: 17px;
+    bottom: 1px;
+}
+
+
+/* ============================================================
+   DELIVERY BOX
+   ============================================================ */
+
+.delivery-box {
+    position: absolute;
+
+    right: 3%;
+
+    width: 78px;
+    height: 64px;
+
+    z-index: 2;
+
+    transform-style: preserve-3d;
+
+    animation: boxReceive 2.4s ease-in-out infinite;
+}
+
+
+/* FRONT */
+
+.box-front {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 58px;
+    height: 52px;
+
+    background: #c88b4a;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    transform: skewY(0deg);
+
+    box-shadow:
+        0 14px 25px rgba(0,0,0,0.28);
+}
+
+
+/* BOX SIDE */
+
+.box-side {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 20px;
+    height: 52px;
+
+    background: #a96f39;
+
+    clip-path: polygon(
+        0 0,
+        100% 10%,
+        100% 100%,
+        0 100%
+    );
+}
+
+
+/* BOX TOP */
+
+.box-top {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 58px;
+    height: 20px;
+
+    background: #dfa461;
+
+    clip-path: polygon(
+        0 20%,
+        70% 0,
+        100% 30%,
+        30% 55%
+    );
+}
+
+
+/* BOX LABEL */
+
+.box-label {
+    position: absolute;
+
+    left: 17px;
+    top: 17px;
+
+    width: 23px;
+    height: 18px;
+
+    display: grid;
+    place-items: center;
+
+    background: rgba(255,255,255,0.82);
+
+    color: #071b15;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    border-radius: 2px;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.preloader-status {
+    width: 100%;
+
+    margin-top: 28px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 9px;
+    letter-spacing: 0.18em;
+
+    color: rgba(255,255,255,0.5);
+}
+
+.preloader-status strong {
+    color: #f3b45c;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+}
+
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes letterToBox {
+
+    0% {
+        left: 8%;
+        opacity: 0;
+        transform: translateY(8px) rotate(-3deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    35% {
+        transform: translateY(-8px) rotate(2deg);
+    }
+
+    68% {
+        left: 74%;
+        transform: translateY(-5px) rotate(0deg);
+        opacity: 1;
+    }
+
+    76% {
+        left: 79%;
+        transform: translateY(0) scale(0.82);
+        opacity: 0.9;
+    }
+
+    84% {
+        left: 79%;
+        transform: translateY(5px) scale(0.55);
+        opacity: 0;
+    }
+
+    100% {
+        left: 8%;
+        opacity: 0;
+        transform: translateY(8px) scale(1);
+    }
+}
+
+
+@keyframes boxReceive {
+
+    0%,
+    62% {
+        transform: translateY(0) scale(1);
+    }
+
+    70% {
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    77% {
+        transform: translateY(3px) scale(0.98);
+    }
+
+    84% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+@keyframes routeTravel {
+
+    0% {
+        transform: translateX(0);
+        opacity: 0.25;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(260px);
+        opacity: 0;
+    }
+}
+
+
+@keyframes courierBrandPulse {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .preloader-courier-scene {
+        width: 86vw;
+    }
+
+    .preloader-brand {
+        margin-bottom: 42px;
+    }
+
+    .preloader-brand strong {
+        font-size: 18px;
+    }
+
+    .courier-route {
+        height: 130px;
+    }
+
+    .courier-letter {
+        width: 62px;
+        height: 45px;
+    }
+
+    .letter-fold {
+        border-left-width: 31px;
+        border-right-width: 31px;
+        border-top-width: 22px;
+    }
+
+    .delivery-box {
+        transform: scale(0.9);
+        transform-origin: right center;
+    }
+
+    .route-line {
+        right: 70px;
+    }
+
+    .preloader-status {
+        font-size: 8px;
+    }
+}
+
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .courier-letter,
+    .delivery-box,
+    .route-line::before,
+    .preloader-brand-icon {
+        animation: none;
+    }
+}
+
+/* =========================================================
+   03. NAVBAR
+========================================================= */
+
+.site-header {
+    transition:
+        background 0.4s ease,
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
+}
+
+.site-header.scrolled {
+    animation: headerDrop 0.45s ease both;
+}
+
+@keyframes headerDrop {
+    from {
+        transform: translateY(-8px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.brand-logo {
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.brand-logo:hover {
+    transform: translateY(-2px);
+}
+
+.brand-icon {
+    transition:
+        transform 0.4s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.4s ease;
+}
+
+.brand-logo:hover .brand-icon {
+    transform: rotate(-8deg) scale(1.06);
+}
+
+.nav-link {
+    position: relative;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -7px;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
+.nav-link:hover {
+    transform: translateY(-1px);
+}
+
+.dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform:
+        translateY(12px)
+        scale(.97);
+    transform-origin: top center;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease,
+        transform 0.3s cubic-bezier(.22, 1, .36, 1);
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.dropdown-menu a {
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        padding-left 0.25s ease;
+}
+
+.dropdown-menu a:hover {
+    padding-left: 24px;
+}
+
+
+/* =========================================================
+   04. BUTTON ANIMATIONS
+========================================================= */
+
+.primary-btn,
+.secondary-btn,
+.light-btn,
+.outline-light-btn,
+.nav-login,
+.drawer-login {
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.35s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.light-btn:hover,
+.outline-light-btn:hover,
+.drawer-login:hover {
+    transform: translateY(-3px);
+}
+
+.primary-btn i,
+.secondary-btn i,
+.light-btn i,
+.outline-light-btn i,
+.drawer-login i {
+    transition:
+        transform 0.35s cubic-bezier(.22, 1, .36, 1);
+}
+
+.primary-btn:hover i,
+.secondary-btn:hover i,
+.light-btn:hover i,
+.outline-light-btn:hover i,
+.drawer-login:hover i {
+    transform: translateX(5px);
+}
+
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: scale(0);
+    animation: rippleAnimation 0.65s ease-out;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+@keyframes rippleAnimation {
+    to {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   05. MOBILE MENU
+========================================================= */
+
+.mobile-menu-button span {
+    transition:
+        transform 0.35s ease,
+        width 0.35s ease,
+        opacity 0.25s ease;
+}
+
+.mobile-menu-button.active span:first-child {
+    transform:
+        translateY(4px)
+        rotate(45deg);
+}
+
+.mobile-menu-button.active span:last-child {
+    transform:
+        translateY(-4px)
+        rotate(-45deg);
+}
+
+.mobile-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+}
+
+.mobile-overlay.active,
+.mobile-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-drawer {
+    transform: translateX(-105%);
+    transition:
+        transform 0.55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.mobile-drawer.active,
+.mobile-drawer.open {
+    transform: translateX(0);
+}
+
+.drawer-header,
+.drawer-navigation,
+.drawer-bottom {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.mobile-drawer.active .drawer-header,
+.mobile-drawer.open .drawer-header {
+    animation: drawerItemIn 0.5s ease 0.15s forwards;
+}
+
+.mobile-drawer.active .drawer-navigation,
+.mobile-drawer.open .drawer-navigation {
+    animation: drawerItemIn 0.5s ease 0.25s forwards;
+}
+
+.mobile-drawer.active .drawer-bottom,
+.mobile-drawer.open .drawer-bottom {
+    animation: drawerItemIn 0.5s ease 0.4s forwards;
+}
+
+.drawer-link {
+    transition:
+        color 0.3s ease,
+        padding-left 0.35s ease,
+        background 0.3s ease;
+}
+
+.drawer-link:hover {
+    padding-left: 12px;
+}
+
+.drawer-close {
+    transition:
+        transform 0.35s ease,
+        background 0.3s ease;
+}
+
+.drawer-close:hover {
+    transform: rotate(90deg);
+}
+
+@keyframes drawerItemIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================================
+   06. HERO BACKGROUND
+========================================================= */
+
+.hero-background {
+    overflow: hidden;
+}
+
+.hero-image {
+    animation: heroImageZoom 12s ease-out both;
+    transform-origin: center center;
+}
+
+@keyframes heroImageZoom {
+    from {
+        transform: scale(1.08);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.hero-overlay {
+    animation: overlayReveal 1.4s ease both;
+}
+
+@keyframes overlayReveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-glow-one {
+    animation:
+        heroGlowOne 7s ease-in-out infinite;
+}
+
+.hero-glow-two {
+    animation:
+        heroGlowTwo 9s ease-in-out infinite;
+}
+
+@keyframes heroGlowOne {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(30px, -25px, 0) scale(1.08);
+    }
+}
+
+@keyframes heroGlowTwo {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-35px, 20px, 0) scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   07. HERO CONTENT
+========================================================= */
+
+.hero-content {
+    animation:
+        heroContentReveal
+        1s
+        cubic-bezier(.22, 1, .36, 1)
+        0.25s
+        both;
+}
+
+.hero-eyebrow {
+    animation:
+        heroFadeUp
+        0.8s
+        ease
+        0.35s
+        both;
+}
+
+.hero-content h1 {
+    animation:
+        heroTitleReveal
+        1s
+        cubic-bezier(.22, 1, .36, 1)
+        0.45s
+        both;
+}
+
+.hero-description {
+    animation:
+        heroFadeUp
+        0.8s
+        ease
+        0.65s
+        both;
+}
+
+.hero-actions {
+    animation:
+        heroFadeUp
+        0.8s
+        ease
+        0.8s
+        both;
+}
+
+.hero-trust {
+    animation:
+        heroFadeUp
+        0.8s
+        ease
+        1s
+        both;
+}
+
+@keyframes heroContentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(45px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroTitleReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateY(45px)
+            scale(.97);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+        filter: blur(0);
+    }
+}
+
+.hero-content h1 span {
+    display: inline-block;
+    animation:
+        titleAccentIn
+        1s
+        cubic-bezier(.22, 1, .36, 1)
+        0.7s
+        both;
+}
+
+.hero-content h1 em {
+    display: inline-block;
+    animation:
+        titleAccentIn
+        1s
+        cubic-bezier(.22, 1, .36, 1)
+        0.85s
+        both;
+}
+
+@keyframes titleAccentIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   08. HERO TRUST
+========================================================= */
+
+.trust-item {
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.trust-item:hover {
+    transform: translateY(-3px);
+}
+
+.trust-item i {
+    transition:
+        transform 0.35s ease;
+}
+
+.trust-item:hover i {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+
+/* =========================================================
+   09. HERO SHIPMENT PANEL
+========================================================= */
+
+.hero-interface {
+    animation:
+        heroPanelReveal
+        1s
+        cubic-bezier(.22, 1, .36, 1)
+        0.5s
+        both;
+}
+
+@keyframes heroPanelReveal {
+    from {
+        opacity: 0;
+        transform:
+            translateX(55px)
+            translateY(20px)
+            scale(.96);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(0)
+            translateY(0)
+            scale(1);
+    }
+}
+
+.shipment-panel {
+    transition:
+        transform 0.45s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.45s ease;
+}
+
+.shipment-panel:hover {
+    transform: translateY(-7px);
+}
+
+.live-status i {
+    animation: livePulse 1.8s ease-in-out infinite;
+}
+
+@keyframes livePulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .45;
+        transform: scale(.65);
+    }
+}
+
+.moving-dot {
+    animation: routeMovingDot 3s ease-in-out infinite;
+}
+
+@keyframes routeMovingDot {
+    0% {
+        left: 0;
+    }
+
+    50% {
+        left: 70%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.progress-track span {
+    transform-origin: left center;
+    animation:
+        progressFill
+        1.6s
+        cubic-bezier(.22, 1, .36, 1)
+        1s
+        both;
+}
+
+@keyframes progressFill {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+
+/* =========================================================
+   10. FLOATING MINI CARDS
+========================================================= */
+
+.floating-mini-card {
+    animation:
+        floatingCardIn
+        .8s
+        cubic-bezier(.22, 1, .36, 1)
+        1s
+        both,
+        floatingCard
+        4s
+        ease-in-out
+        2s
+        infinite;
+}
+
+.card-two {
+    animation-delay:
+        1.25s,
+        2.25s;
+}
+
+@keyframes floatingCardIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px)
+            scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+@keyframes floatingCard {
+    0%,
+    100% {
+        margin-top: 0;
+    }
+
+    50% {
+        margin-top: -8px;
+    }
+}
+
+.mini-icon {
+    transition:
+        transform 0.35s ease;
+}
+
+.floating-mini-card:hover .mini-icon {
+    transform:
+        rotate(-8deg)
+        scale(1.1);
+}
+
+
+/* =========================================================
+   11. HERO STATS
+========================================================= */
+
+.hero-stat {
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.hero-stat:hover {
+    transform: translateY(-5px);
+}
+
+.hero-stat strong {
+    transition:
+        transform 0.35s ease;
+}
+
+.hero-stat:hover strong {
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   12. SCROLL INDICATOR
+========================================================= */
+
+.scroll-indicator {
+    animation:
+        scrollIndicatorIn
+        1s
+        ease
+        1.5s
+        both;
+}
+
+.scroll-indicator div {
+    animation:
+        scrollLineMove
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes scrollIndicatorIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scrollLineMove {
+    0% {
+        transform:
+            translateY(0)
+            scaleY(.5);
+        transform-origin: top;
+    }
+
+    50% {
+        transform:
+            translateY(12px)
+            scaleY(1);
+        transform-origin: center;
+    }
+
+    100% {
+        transform:
+            translateY(24px)
+            scaleY(.5);
+        transform-origin: bottom;
+    }
+}
+
+
+/* =========================================================
+   13. SCROLL REVEAL
+========================================================= */
+
+.reveal,
+.reveal-right {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reveal.is-visible,
+.reveal.visible,
+.reveal-right.is-visible,
+.reveal-right.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reveal:not(.is-visible):not(.visible) {
+    animation:
+        sectionReveal
+        .9s
+        cubic-bezier(.22, 1, .36, 1)
+        both;
+}
+
+.reveal-right:not(.is-visible):not(.visible) {
+    animation:
+        sectionRevealRight
+        .9s
+        cubic-bezier(.22, 1, .36, 1)
+        both;
+}
+
+@keyframes sectionReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sectionRevealRight {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================================
+   14. SECTION HEADINGS
+========================================================= */
+
+.section-kicker {
+    transition:
+        letter-spacing 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.section-heading:hover .section-kicker,
+.global-heading:hover .section-kicker,
+.business-header:hover .section-kicker {
+    letter-spacing: .18em;
+}
+
+.section-heading h2 span,
+.tracking-copy h2 span,
+.business-header h2 span {
+    display: inline-block;
+    transition:
+        transform 0.45s cubic-bezier(.22, 1, .36, 1);
+}
+
+.section-heading:hover h2 span,
+.tracking-copy:hover h2 span,
+.business-header:hover h2 span {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   15. INTRO FEATURES
+========================================================= */
+
+.intro-feature {
+    transition:
+        transform 0.45s cubic-bezier(.22, 1, .36, 1),
+        box-shadow 0.45s ease;
+}
+
+.intro-feature:not(.featured):hover {
+    transform: translateY(-8px);
+}
+
+.intro-feature i {
+    transition:
+        transform 0.4s ease;
+}
+
+.intro-feature:hover > i {
+    transform:
+        translateY(-4px)
+        rotate(-5deg);
+}
+
+.intro-image {
+    overflow: hidden;
+}
+
+.intro-image img {
+    transition:
+        transform .9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.intro-image:hover img {
+    transform: scale(1.06);
+}
+
+.image-caption {
+    transition:
+        transform .4s ease,
+        opacity .4s ease;
+}
+
+.intro-image:hover .image-caption {
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   16. SERVICES CAROUSEL
+========================================================= */
+
+.services-carousel {
+    position: relative;
+}
+
+.service-slide {
+    display: none;
+}
+
+.service-slide.active {
+    display: grid;
+    animation:
+        serviceSlideIn
+        .7s
+        cubic-bezier(.22, 1, .36, 1)
+        both;
+}
+
+@keyframes serviceSlideIn {
+    from {
+        opacity: 0;
+        transform:
+            translateX(35px)
+            scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateX(0)
+            scale(1);
+    }
+}
+
+.service-image {
+    overflow: hidden;
+}
+
+.service-image img {
+    transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1),
+        filter .6s ease;
+}
+
+.service-slide:hover .service-image img {
+    transform: scale(1.07);
+}
+
+.service-image > span {
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+.service-slide:hover .service-image > span {
+    transform: translateY(-5px);
+}
+
+.service-link {
+    transition:
+        gap .35s ease,
+        color .35s ease;
+}
+
+.service-link:hover {
+    gap: 14px;
+}
+
+.service-link i {
+    transition:
+        transform .35s ease;
+}
+
+.service-link:hover i {
+    transform: translateX(4px);
+}
+
+.carousel-control {
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease;
+}
+
+.carousel-control:hover {
+    transform: scale(1.08);
+}
+
+.carousel-control:active {
+    transform: scale(.94);
+}
+
+.carousel-progress .carousel-line span {
+    transform-origin: left center;
+    transition:
+        width .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   17. TRACKING SECTION
+========================================================= */
+
+.tracking-points > div {
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+}
+
+.tracking-points > div:hover {
+    transform: translateX(7px);
+}
+
+.tracking-points i {
+    transition:
+        transform .35s ease;
+}
+
+.tracking-points > div:hover i {
+    transform:
+        scale(1.1)
+        rotate(-5deg);
+}
+
+.tracking-card {
+    transition:
+        transform .5s cubic-bezier(.22, 1, .36, 1),
+        box-shadow .5s ease;
+}
+
+.tracking-card:hover {
+    transform: translateY(-8px);
+}
+
+.tracking-map {
+    overflow: hidden;
+}
+
+.tracking-map img {
+    transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.tracking-card:hover .tracking-map img {
+    transform: scale(1.04);
+}
+
+.map-pin {
+    animation:
+        mapPinPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+.pin-current {
+    animation:
+        mapCurrentPulse
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes mapPinPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+}
+
+@keyframes mapCurrentPulse {
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255,255,255,.25);
+    }
+
+    50% {
+        transform: scale(1.12);
+        box-shadow: 0 0 0 12px rgba(255,255,255,0);
+    }
+}
+
+.tracking-event {
+    transition:
+        transform .35s ease,
+        background .35s ease;
+}
+
+.tracking-event:hover {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   18. ADVANTAGES
+========================================================= */
+
+.advantage-image {
+    overflow: hidden;
+}
+
+.advantage-image img {
+    transition:
+        transform .9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.advantage-image:hover img {
+    transform: scale(1.06);
+}
+
+.advantage-row {
+    transition:
+        transform .4s cubic-bezier(.22, 1, .36, 1),
+        padding-left .4s ease,
+        background .4s ease;
+}
+
+.advantage-row:hover {
+    transform: translateX(8px);
+}
+
+.advantage-icon {
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.advantage-row:hover .advantage-icon {
+    transform:
+        scale(1.08)
+        rotate(-5deg);
+}
+
+.advantage-row > i {
+    transition:
+        transform .4s ease;
+}
+
+.advantage-row:hover > i {
+    transform:
+        translate(4px, -4px);
+}
+
+
+/* =========================================================
+   19. BUSINESS SECTION
+========================================================= */
+
+.business-image {
+    overflow: hidden;
+}
+
+.business-image img {
+    transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.business-image:hover img {
+    transform: scale(1.06);
+}
+
+.image-overlay-content {
+    transition:
+        transform .45s ease,
+        opacity .45s ease;
+}
+
+.business-image:hover .image-overlay-content {
+    transform: translateY(-6px);
+}
+
+.data-card {
+    transition:
+        transform .4s cubic-bezier(.22, 1, .36, 1),
+        box-shadow .4s ease;
+}
+
+.data-card:hover {
+    transform: translateY(-6px);
+}
+
+.data-icon {
+    transition:
+        transform .4s ease;
+}
+
+.data-card:hover .data-icon {
+    transform:
+        rotate(-7deg)
+        scale(1.08);
+}
+
+.business-quote {
+    transition:
+        transform .45s ease,
+        border-color .45s ease;
+}
+
+.business-quote:hover {
+    transform: translateY(-5px);
+}
+
+
+/* =========================================================
+   20. GLOBAL MOSAIC
+========================================================= */
+
+.mosaic-large,
+.mosaic-small {
+    overflow: hidden;
+}
+
+.mosaic-large img,
+.mosaic-small img {
+    transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1),
+        filter .5s ease;
+}
+
+.mosaic-large:hover img,
+.mosaic-small:hover img {
+    transform: scale(1.07);
+}
+
+.mosaic-label,
+.mosaic-small > div {
+    transition:
+        transform .45s ease;
+}
+
+.mosaic-large:hover .mosaic-label,
+.mosaic-small:hover > div {
+    transform: translateY(-5px);
+}
+
+.mosaic-small.dark {
+    transition:
+        transform .4s cubic-bezier(.22, 1, .36, 1),
+        box-shadow .4s ease;
+}
+
+.mosaic-small.dark:hover {
+    transform: translateY(-7px);
+}
+
+.mosaic-small.dark > i {
+    transition:
+        transform .35s ease;
+}
+
+.mosaic-small.dark:hover > i {
+    transform:
+        translate(5px, -5px);
+}
+
+.mosaic-number {
+    transition:
+        transform .45s ease;
+}
+
+.mosaic-small.dark:hover .mosaic-number {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   21. CTA SECTION
+========================================================= */
+
+.cta-section {
+    overflow: hidden;
+}
+
+.cta-background {
+    overflow: hidden;
+}
+
+.cta-background img {
+    animation:
+        ctaImageZoom
+        14s
+        ease-out
+        both;
+}
+
+@keyframes ctaImageZoom {
+    from {
+        transform: scale(1.1);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+.cta-content h2 {
+    animation:
+        ctaTitleIn
+        .9s
+        cubic-bezier(.22, 1, .36, 1)
+        .2s
+        both;
+}
+
+@keyframes ctaTitleIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   22. FOOTER
+========================================================= */
+
+.footer-socials a {
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        color .35s ease;
+}
+
+.footer-socials a:hover {
+    transform:
+        translateY(-5px)
+        rotate(-4deg);
+}
+
+.footer-column a {
+    position: relative;
+    transition:
+        color .3s ease,
+        padding-left .3s ease;
+}
+
+.footer-column a:hover {
+    padding-left: 7px;
+}
+
+.footer-column a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    transition: width .3s ease;
+}
+
+.footer-column a:hover::before {
+    width: 4px;
+}
+
+.newsletter-input button {
+    transition:
+        transform .35s ease,
+        background .35s ease;
+}
+
+.newsletter-input button:hover {
+    transform: translateX(3px);
+}
+
+.newsletter-input button i {
+    transition:
+        transform .35s ease;
+}
+
+.newsletter-input button:hover i {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   23. LOGIN MODAL
+========================================================= */
+
+.modal-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity .45s ease,
+        visibility .45s ease;
+}
+
+.modal-overlay.active,
+.modal-overlay.open,
+.modal-overlay[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+}
+
+.login-modal {
+    opacity: 0;
+    transform:
+        translateY(35px)
+        scale(.96);
+    transition:
+        opacity .5s cubic-bezier(.22, 1, .36, 1),
+        transform .5s cubic-bezier(.22, 1, .36, 1);
+}
+
+.modal-overlay.active .login-modal,
+.modal-overlay.open .login-modal,
+.modal-overlay[aria-hidden="false"] .login-modal {
+    opacity: 1;
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.modal-close {
+    transition:
+        transform .35s ease,
+        background .3s ease;
+}
+
+.modal-close:hover {
+    transform: rotate(90deg);
+}
+
+.login-visual {
+    overflow: hidden;
+}
+
+.login-visual img {
+    transition:
+        transform 1s cubic-bezier(.22, 1, .36, 1);
+}
+
+.login-modal:hover .login-visual img {
+    transform: scale(1.04);
+}
+
+.secure-badge {
+    animation:
+        secureBadgeIn
+        .7s
+        ease
+        .45s
+        both;
+}
+
+@keyframes secureBadgeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-tab {
+    position: relative;
+    transition:
+        color .3s ease,
+        background .3s ease;
+}
+
+.login-tab::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    transform: scaleX(0);
+    transition:
+        transform .35s ease;
+}
+
+.login-tab.active::after {
+    transform: scaleX(1);
+}
+
+.input-wrap {
+    transition:
+        border-color .3s ease,
+        box-shadow .3s ease,
+        transform .3s ease;
+}
+
+.input-wrap:focus-within {
+    transform: translateY(-1px);
+}
+
+.password-toggle {
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+}
+
+.password-toggle:hover {
+    transform: scale(1.1);
+}
+
+.login-submit {
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        opacity .3s ease;
+}
+
+.login-submit:hover {
+    transform: translateY(-3px);
+}
+
+.login-submit:active {
+    transform: translateY(-1px) scale(.98);
+}
+
+.input-error {
+    animation:
+        inputShake
+        .35s
+        ease;
+}
+
+@keyframes inputShake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.login-security i {
+    animation:
+        securityPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes securityPulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+
+/* =========================================================
+   24. BACK TO TOP
+========================================================= */
+
+.back-to-top {
+    opacity: 0;
+    visibility: hidden;
+    transform:
+        translateY(15px)
+        scale(.85);
+    transition:
+        opacity .35s ease,
+        visibility .35s ease,
+        transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+.back-to-top.show,
+.back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.back-to-top:hover {
+    transform:
+        translateY(-5px)
+        scale(1.05);
+}
+
+.back-to-top i {
+    transition:
+        transform .35s ease;
+}
+
+.back-to-top:hover i {
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   25. IMAGE HOVER OVERLAY
+========================================================= */
+
+.intro-image,
+.service-image,
+.advantage-image,
+.business-image,
+.mosaic-large,
+.mosaic-small,
+.tracking-map,
+.login-visual {
+    position: relative;
+}
+
+.intro-image::after,
+.service-image::after,
+.advantage-image::after,
+.business-image::after,
+.mosaic-large::after,
+.mosaic-small::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(
+            120deg,
+            transparent 30%,
+            rgba(255,255,255,.14) 50%,
+            transparent 70%
+        );
+    transform: translateX(-100%);
+    transition:
+        opacity .3s ease;
+}
+
+.intro-image:hover::after,
+.service-image:hover::after,
+.advantage-image:hover::after,
+.business-image:hover::after,
+.mosaic-large:hover::after,
+.mosaic-small:hover::after {
+    opacity: 1;
+    animation: imageShine .9s ease forwards;
+}
+
+@keyframes imageShine {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+
+/* =========================================================
+   26. STAGGER EFFECTS
+========================================================= */
+
+.intro-grid .intro-feature:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.intro-grid .intro-feature:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.intro-grid .intro-feature:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.advantage-list .advantage-row:nth-child(1) {
+    animation-delay: .1s;
+}
+
+.advantage-list .advantage-row:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.advantage-list .advantage-row:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.advantage-list .advantage-row:nth-child(4) {
+    animation-delay: .4s;
+}
+
+.business-data .data-card:nth-child(1) {
+    animation-delay: .15s;
+}
+
+.business-data .data-card:nth-child(2) {
+    animation-delay: .3s;
+}
+
+
+/* =========================================================
+   27. MOBILE ANIMATION OPTIMIZATION
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .hero-image {
+        animation-duration: 9s;
+    }
+
+    .floating-mini-card {
+        animation-duration: 3.5s;
+    }
+
+    .hero-content h1 {
+        animation-duration: .8s;
+    }
+
+    .login-modal {
+        transition-duration: .4s;
+    }
+
+    .service-slide.active {
+        animation-duration: .5s;
+    }
+
+}
+
+
+/* =========================================================
+   28. DISABLE HEAVY HOVER MOTION ON TOUCH
+========================================================= */
+
+@media (hover: none) {
+
+    .primary-btn:hover,
+    .secondary-btn:hover,
+    .light-btn:hover,
+    .outline-light-btn:hover,
+    .drawer-login:hover {
+        transform: none;
+    }
+
+    .shipment-panel:hover,
+    .tracking-card:hover,
+    .data-card:hover,
+    .advantage-row:hover {
+        transform: none;
+    }
+
+    .intro-image:hover img,
+    .service-slide:hover .service-image img,
+    .business-image:hover img,
+    .mosaic-large:hover img,
+    .mosaic-small:hover img {
+        transform: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================================ */
+
+.reveal,
+.reveal-right {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Only animate AFTER JS detects the element */
+.reveal.is-visible,
+.reveal.visible {
+    animation: scrollRevealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-right.is-visible,
+.reveal-right.visible {
+    animation: scrollRevealRight 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+
+/* ============================================================
+   UPWARD REVEAL
+   ============================================================ */
+
+@keyframes scrollRevealUp {
+    0% {
+        opacity: 0;
+        transform: translateY(55px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ============================================================
+   RIGHT SIDE REVEAL
+   ============================================================ */
+
+@keyframes scrollRevealRight {
+    0% {
+        opacity: 0;
+        transform: translateX(65px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ============================================================
+   SECTION HEADINGS
+   ============================================================ */
+
+.section-heading.reveal.is-visible,
+.section-heading.reveal.visible {
+    animation-delay: 0.05s;
+}
+
+
+/* ============================================================
+   STAGGER — INTRO FEATURES
+   ============================================================ */
+
+.intro-feature:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.intro-feature:nth-child(2) {
+    transition-delay: 0.15s;
+}
+
+.intro-feature:nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+
+/* ============================================================
+   STAGGER — ADVANTAGE ROWS
+   ============================================================ */
+
+.advantage-row:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.advantage-row:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.advantage-row:nth-child(3) {
+    animation-delay: 0.19s;
+}
+
+.advantage-row:nth-child(4) {
+    animation-delay: 0.26s;
+}
+
+
+/* ============================================================
+   IMAGE REVEAL
+   ============================================================ */
+
+.intro-image,
+.advantage-image,
+.business-image,
+.mosaic-large,
+.mosaic-small {
+    overflow: hidden;
+}
+
+.intro-image img,
+.advantage-image img,
+.business-image img,
+.mosaic-large img,
+.mosaic-small img {
+    transition:
+        transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.8s ease;
+}
+
+.intro-image:hover img,
+.advantage-image:hover img,
+.business-image:hover img,
+.mosaic-large:hover img,
+.mosaic-small:hover img {
+    transform: scale(1.04);
+}
+
+
+/* ============================================================
+   SECTION CONTENT MICRO MOVEMENT
+   ============================================================ */
+
+.tracking-points li,
+.hero-trust .trust-item,
+.hero-stat {
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+.tracking-points li:hover,
+.hero-trust .trust-item:hover {
+    transform: translateX(6px);
+}
+
+
+/* ============================================================
+   SERVICE SLIDE ANIMATION
+   ============================================================ */
+
+.service-slide {
+    transition:
+        opacity 0.6s ease,
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.service-slide.active {
+    animation: serviceSlideIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes serviceSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* ============================================================
+   GLOBAL MOSAIC REVEAL
+   ============================================================ */
+
+.mosaic-large.is-visible,
+.mosaic-large.visible {
+    animation: mosaicReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mosaic-small.is-visible,
+.mosaic-small.visible {
+    animation: mosaicReveal 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.mosaic-small:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.mosaic-small:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes mosaicReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ============================================================
+   CTA REVEAL
+   ============================================================ */
+
+.cta-content.is-visible,
+.cta-content.visible {
+    animation: ctaReveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ctaReveal {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ============================================================
+   FOOTER REVEAL
+   ============================================================ */
+
+.footer-column,
+.footer-brand,
+.footer-newsletter {
+    transition:
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.footer-column:hover,
+.footer-newsletter:hover {
+    transform: translateY(-4px);
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal,
+    .reveal-right {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
