@@ -13158,3 +13158,26 @@ body.contact-page .outline-light-btn:hover {
         font-size: 11px;
     }
 }
+
+
+
+.tracking-hero-bottom {
+    border: none !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.tracking-hero-bottom::before,
+.tracking-hero-bottom::after {
+    content: none !important;
+    display: none !important;
+    border: none !important;
+    background: none !important;
+}
+
+
+
+.tracking-hero-bottom {
+    margin-top: 60px;
+}
