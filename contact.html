@@ -849,13 +849,16 @@
                                         FULL NAME
                                     </label>
 
-                                    <input
-                                        type="text"
-                                        id="contactName"
-                                        name="name"
-                                        placeholder="Your full name"
-                                        autocomplete="name"
-                                    >
+                                    <input 
+    type="text" 
+    id="contactName" 
+    name="name" 
+    placeholder="Your full name" 
+    autocomplete="name"
+    inputmode="text"
+    pattern="[A-Za-z ]+"
+    oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '')"
+>
 
                                 </div>
 
@@ -890,13 +893,16 @@
                                         PHONE NUMBER
                                     </label>
 
-                                    <input
-                                        type="tel"
-                                        id="contactPhone"
-                                        name="phone"
-                                        placeholder="+91 00000 00000"
-                                        autocomplete="tel"
-                                    >
+                                  <input 
+    type="tel" 
+    id="contactPhone" 
+    name="phone" 
+    placeholder="00000 00000" 
+    autocomplete="tel"
+    inputmode="numeric"
+    pattern="[0-9]+"
+    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+>
 
                                 </div>
 
